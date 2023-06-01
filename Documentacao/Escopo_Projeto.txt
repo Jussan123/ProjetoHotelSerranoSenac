@@ -1,0 +1,61 @@
+Escopo do Sistema de Gerenciamento de Hotelaria:
+
+O sistema de gerenciamento de hotelaria é uma aplicação que permite aos clientes criar suas próprias reservas, buscar a lista completa de quartos disponíveis ou procurar quartos pelo ID. Além disso, o sistema automatiza a agenda de limpeza dos quartos após o check-out dos hóspedes e permite a inclusão de produtos consumidos na conta do cliente.
+
+Recursos do sistema:
+
+1 > Reservas:
+• Os clientes solicita reservas para quartos disponíveis via telefone.
+• O atendente pode procurar quartos pelo ID.
+• O atendente pode visualizar as reservas atuais e futuras dos clientes.
+• O atendente pode modificar ou cancelar as reservas de cada cliente, desde que solicitado pelo mesmo e dentro dos prazos e políticas definidos pelo hotel.
+
+2 > Check-in e Check-out:
+• O atendente registra o check-in e check-out dos hóspedes.
+• Ao realizar o check-out, o sistema agendará automaticamente a limpeza do quarto.
+• Os clientes podem solicitar seu histórico de check-ins e check-outs anteriores.
+
+3 > Despesas:
+• Os clientes podem adicionar produtos consumidos à sua conta durante a estadia.
+• O sistema registra as despesas associadas a cada reserva.
+• Os clientes podem solicitar um resumo de suas despesas durante a estadia.
+
+4 > Administração:
+• O administrador tem acesso a um painel de controle para monitorar várias informações:
+• Despesas gerais do hotel.
+• Lista completa de reservas, incluindo detalhes dos hóspedes e datas.
+• Catálogo de produtos disponíveis para consumo.
+• Dados dos hóspedes, incluindo informações de contato e histórico de estadias.
+• Status das limpezas agendadas e histórico de limpezas concluídas.
+• Informações dos funcionários, incluindo detalhes de contato, salário e funções.
+
+5 > Segurança:
+• O sistema requer autenticação para acessar funcionalidades administrativas. (admin/user não tem acesso ao passo 4)
+• Os dados dos hóspedes, reservas, despesas e produtos são armazenados de forma segura.
+
+6 > Relatórios:
+• O sistema permite gerar relatórios sobre as despesas, reservas, produtos, hóspedes, limpeza e funcionários.
+• Os relatórios podem ser filtrados por datas, quartos, hóspedes, etc.
+
+Observações:
+
+• O sistema pode ser acessado através de uma aplicação desktop pelo atendente e pelo administrador.
+• A aplicação deve ser desenvolvida levando em consideração as boas práticas de desenvolvimento de software, incluindo segurança e confiabilidade.
+
+Escopo para o sistema de gerenciamento de hotelaria.
+
+‌
+
+Considerações Técnicas
+
+O sistema de hotelaria será desenvolvido como uma aplicação Desktop.
+Será utilizado um banco de dados MariaDB AWS para armazenar as informações dos clientes, reservas, quartos, despesas e outros dados relevantes.
+A interface do usuário será projetada de forma intuitiva e responsiva, permitindo o acesso tanto em dispositivos desktop quanto em dispositivos móveis.
+A segurança dos dados será uma prioridade, e serão implementadas medidas para proteger as informações confidenciais dos hóspedes e garantir a conformidade com A LGPD.
+‌
+
+Considerações de Cronograma
+
+O projeto será dividido em fases, com prazos específicos para cada fase.
+Serão realizadas reuniões regulares com a equipe de desenvolvimento e stakeholders para acompanhar o progresso do projeto e resolver quaisquer problemas ou dúvidas que surjam.
+O cronograma será flexível para acomodar eventuais mudanças de requisitos ou imprevistos durante o desenvolvimento.
