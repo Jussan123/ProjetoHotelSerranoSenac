@@ -59,6 +59,41 @@ c. O cronograma deve ser flexível para acomodar mudanças de requisitos ou impr
 
 7 > Identidade Visual do hotel:
 a. O sistema deve seguir a identidade visual do hotel, incluindo cores, fontes e logotipo.
-a.1 > Fontes: 
-b. > Cores: 
-c. > Logotipo: Pasta Logo dentro do projeto.
+a.1 Style guide Sistema de Hotelaria 
+Todo desenvolvimento de UI se inicia um a um Guia de Estilos a ser seguido. Ele servirá de direção para a utilização de componentes e cores, 
+tendo como objetivo seguir um padrão para todo o sistema. Com isso, utilizaremos o Style guide abaixo, que nos guiará nos padrões de Interface 
+para nosso sistema de Hotelaria, garantindo que tudo seja desenvolvido dentro de um padrão pré-estabelecido.
+
+b. > Fontes: O tipo de letra principal é o Roboto. Roboto tem uma natureza dupla. Tem um esqueleto mecânico e as formas são em grande 
+parte geométricas. Ao mesmo tempo, a fonte apresenta curvas amigáveis e abertas. Enquanto alguns grotescos distorcem suas formas de letra 
+para forçar um ritmo rígido, Roboto não se compromete, permitindo que as letras sejam ajustadas em sua largura natural. Isso cria um ritmo 
+de leitura mais natural, mais comumente encontrado nos tipos humanista e serif.
+
+• Roboto
+
+c. > Cores: O esquema de cor visa apontar as cores que podem ser utilizadas no sistema, formando um padrão visual comum.
+
+Principais >> As cores primárias são usadas para os elementos. 
+Cada cor tem um tom mais escuro e mais claro.
+
+• Light blue: #05DDFB / Blue: #009FB7 / Dark Blue: #005E6B
+• Light purple: #BDAED0 / purple: #947EB0 / Dark purple: #503176
+• Light orange: #FF6C6C / orange: #FE4A49 / Dark orange: #BA0B0B
+• Light green: #748E83 / green: #3E5E50 / Dark green: #234436
+• Light yellow: #FFE18B / yellow: #FED766 / Dark yellow: #BF961D
+• Light brown: #9F6316 / brown: #7D4600 / Dark brown: #301B00
+
+Tons de Cinza >> As cores cinza são usadas para texto, planos de fundo, linhas e bordas.
+ Smoke e Snow têm dois tons mais escuros, usados para ícones e planos de fundo.
+
+• Smoke: #E0E6ED / Dark Smoke: #D3DCE6 / Extra Dark Smoke: #C0CCDA
+• snow: #F9FAFC / Dark snow: #EFF2F7 / Extra dark snow: #E5E9F2
+
+d. Layout:
+Todas as telas deverão ter ume spaçamento uniforme e poderá ser constituídas das seguintes disposições:
+pasta: Imagens imagem1.jpg
+
+Observações:
+A aplicação aqui contida deve ser utilizada apenas para fins puramente acadêmicos e não deve possuir nenhuma veiculação comercial.
+
+e. > Logotipo: Pasta Logo dentro do projeto.
