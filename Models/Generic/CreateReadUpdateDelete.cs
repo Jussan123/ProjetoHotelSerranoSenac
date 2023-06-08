@@ -10,11 +10,11 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
         public T Cadastrar(T obj)
         {
             T objCreated = new T();
-            return objCreated;
-
             Banco.DataBase db = new Banco.DataBase();
             db.Set<T>().Add(obj);
             db.SaveChanges();
+
+            return objCreated;
         }
 
         public IEnumerable<T> GetAll()
