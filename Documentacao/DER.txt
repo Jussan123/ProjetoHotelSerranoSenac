@@ -3,8 +3,6 @@ Table Hoteis {
   nome VARCHAR(255)
   endereco VARCHAR(255)
   telefone VARCHAR(255)
-  email VARCHAR(255)
-  senha VARCHAR(255)  
 }
 
 Table Cliente {
@@ -18,8 +16,9 @@ Table Cliente {
 Table Quarto {
   quartoId INT [pk]
   numero_quarto INT
-  tipo VARCHAR(255)
+  descricao VARCHAR(255)
   disponivel BOOLEAN
+  valor decimal(10,2)
   hotelId INT [ref: > Hoteis.hotelId]
 }
 
@@ -42,6 +41,8 @@ Table Checkin {
 Table Checkout {
   checkoutId INT [pk]
   reservaId INT [ref: > Reserva.reservaId]
+  despesaId int [ref: > Despesa.despesaId]
+  valorFinal decimal(10,2)
   data_checkout DATETIME
 }
 
@@ -50,12 +51,14 @@ Table Limpezas {
   quartoId INT [ref: > Quarto.quartoId]
   data DATETIME
   checkoutId INT [ref: > Checkout.checkoutId]
+  funcionarioId int [ref: > Funcionario.funcionarioId]
 }
 
 Table Produto {
   produtoId INT [pk]
   nome VARCHAR(255)
   preco DECIMAL(10,2)
+  quantidade int
   hotelId INT [ref: > Hoteis.hotelId]
 }
 
@@ -64,7 +67,7 @@ Table Despesa {
   reservaId INT [ref: > Reserva.reservaId]
   produtoId INT [ref: > Produto.produtoId]
   valor DECIMAL(10,2)
-  quantidade INT
+  quantidadeProduto INT
   }
 
 Table Administrador {
@@ -83,13 +86,4 @@ Table Funcionario {
   salario DECIMAL(10,2)
   funcao VARCHAR(255)
   hotelId INT [ref: > Hoteis.hotelId]
-}
-
-Table Relatorio {
-  relatorioId INT [pk]
-  administradorId INT [ref: > Administrador.administradorId]
-  funcionarioId INT [ref: > Funcionario.funcionarioId]
-  hotelId INT [ref: > Hoteis.hotelId]
-  data DATETIME
-  descricao VARCHAR(255)
 }
