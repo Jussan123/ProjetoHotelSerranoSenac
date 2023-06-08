@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetoHotelSerranoSenac.Models.Produto
+namespace ProjetoHotelSerranoSenac.Models
 {
     public class Produto : CreateReadUpdateDelete<Produto>
     {
