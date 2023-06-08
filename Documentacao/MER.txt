@@ -11,22 +11,21 @@ Entidades:
 • Despesas
 • Administradores
 • Funcionarios
-• Relatorios
+
 
 Atributos:
 
-• Hoteis (hotelId, nome, endereco, telefone, email, senha)
+• Hoteis (hotelId, nome, endereco, telefone)
 • Clientes (clienteId, nome, email, telefone, hotelId)
-• Quartos (quartoId, numero_quarto, tipo, disponivel, hotelId)
+• Quartos (quartoId, numero_quarto, descricao, valor, disponivel, hotelId)
 • Reservas (reservaId, clienteId, quartoId, data_checkin, data_checkout, preco, hotelId)
 • Checkin (checkinId, reservaId, data_checkin)
-• Checkout (checkoutId, reservaId, data_checkout)
-• Limpezas (limpezaId, quartoId, data, checkoutId)
-• Produtos (produtoId, nome, preco, hotelId)
-• Despesas (despesaId, reservaId, produtoId, valor, quantidade)
+• Checkout (checkoutId, reservaId, despesaId, valorFinal, data_checkout)
+• Limpezas (limpezaId, quartoId, data, checkoutId, funcionarioId)
+• Produtos (produtoId, nome, preco, quantidade, hotelId)
+• Despesas (despesaId, reservaId, produtoId, valor, quantidadeProduto)
 • Administradores (administradorId, nome, email, senha, hotelId)
 • Funcionarios (funcionarioId, nome, email, telefone, salario, funcao, hotelId)
-• Relatorios (relatorioId, administradorId, funcionarioId, hotelId, data, descricao)
 
 Relações:
 
@@ -39,10 +38,9 @@ Reserva (1) - (1) Checkin
 Reserva (1) - (1) Checkout
 Quarto (1) - (N) Limpezas
 Checkout (1) - (1) Limpezas
+Limpezas (N) - (1) Funcionario
 Hoteis (1) - (N) Produto
 Reserva (1) - (N) Despesa
 Produto (1) - (N) Despesa
 Hoteis (1) - (N) Administrador
 Hoteis (1) - (N) Funcionario
-Administrador (1) - (N) Relatorio
-Funcionario (1) - (N) Relatorio
