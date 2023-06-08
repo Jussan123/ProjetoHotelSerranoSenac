@@ -12,26 +12,26 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
             T objCreated = new T();
             return objCreated;
 
-            Banco db = new Banco();
+            Banco.DataBase db = new Banco.DataBase();
             db.Set<T>().Add(obj);
             db.SaveChanges();
         }
 
         public IEnumerable<T> GetAll()
         {
-            Banco db = new Banco();
+            Banco.DataBase db = new Banco.DataBase();
             return db.Set<T>().ToList();
         }
 
         public T Get(int id)
         {
-            Banco db = new Banco();
+            Banco.DataBase db = new Banco.DataBase();
             return db.Set<T>().Find(id);
         }
 
         public T Alterar(T obj)
         {
-            Banco db = new Banco();
+            Banco.DataBase db = new Banco.DataBase();
             db.Set<T>().Update(obj);
             db.SaveChanges();
             return obj;
@@ -39,7 +39,7 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
 
         public void Excluir(int id)
         {
-            Banco db = new Banco();
+            Banco.DataBase db = new Banco.DataBase();
             db.Set<T>().Remove(Get(id));
             db.SaveChanges();
         }
