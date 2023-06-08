@@ -21,7 +21,17 @@ namespace Banco
     {
         // criação das tabelas no banco de dados pelo Entity Framework
         public DbSet<Hotel> Hoteis { get; set; } // padrão de nomeclatura do Entity Framework
-
+        public DbSet<Checkin> Checkins { get; set; }
+        public DbSet<Checkout> Checkouts { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Despesa> Despesas { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Limpeza> Limpezas { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Quarto> Quartos { get; set; }
+        public DbSet<Relatorio> Relatorios { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<Administrador> Administradores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
