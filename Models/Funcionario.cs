@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetoHotelSerranoSenac.Models.Funcionario
+namespace ProjetoHotelSerranoSenac.Models
 {
     public class Funcionario : CreateReadUpdateDelete<Funcionario>
     {

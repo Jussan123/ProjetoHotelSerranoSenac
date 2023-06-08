@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetoHotelSerranoSenac.Models.Checkin
+namespace ProjetoHotelSerranoSenac.Models
 {
-    public class Checkin : CreateReadUpdateDelete<Checkin>
+    public class Checkout : CreateReadUpdateDelete<Checkout>
     {
         public int Id { get; set; }
         public int ReservaId { get; set; }
         public Reserva.Reserva Reserva { get; set; }
-        public DateTime DataCheckin { get; set; }
+        public DateTime DataCheckout { get; set; }
 
-        public Checkin() { }
+        public Checkout() { }
 
-        public Checkin(int reservaId, DateTime dataCheckin)
+        public Checkout(int reservaId, DateTime dataCheckout)
         {
             ReservaId = reservaId;
-            DataCheckin = dataCheckin;
+            DataCheckout = dataCheckout;
         }
     }
 }

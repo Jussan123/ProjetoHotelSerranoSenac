@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetoHotelSerranoSenac.Models.Cliente
+namespace ProjetoHotelSerranoSenac.Models
 {
-    public class Cliente : CreateReadUpdateDelete<Cliente>
+    public class Administrador : CreateReadUpdateDelete<Administrador>
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Email {get; set;}
-        public string Telefone {get; set;}
+        public string Email { get; set; }
+        public string Senha { get; set; }
         public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
 
-        public Cliente() { }
+        public Administrador() { }
 
-        public Cliente(string nome, string email, string telefone, int hotelId)
+        public Administrador(string nome, string email, string senha, int hotelId)
         {
             Nome = nome;
             Email = email;
-            Telefone = telefone;
+            Senha = senha;
             HotelId = hotelId;
         }
     }
