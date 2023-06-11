@@ -4,55 +4,32 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Checkin
     {
-        public static Models.Checkin CadastrarCheckin(string checkinId, string reservaId, string data_checkin)
+        public static Models.Checkin CadastrarCheckinstring(string reservaId, string data_checkin)
         {
-            int intCheckinId = int Parse(checkinId);
-            Models.Checkin checkin = Models.Checkin.Get(intCheckinId);
-
-            int intReservaId = int Parse(reservaId);
+            int intReservaId = int.Parse(reservaId);
             Models.Reserva reserva = Models.Reserva.Get(intReservaId);
 
-            return new Models.Checkin.Cadastrar(checkin, reserva, data_checkin);
+            Models.Checkin checkin = new Models.Checkin(reserva, data_checkin);
+            return Models.Checkin.Cadastrar(checkin);
         }
 
         public static List<Models.Checkin> GetAllCheckins()
         {
-            List<Models.Checkin> checkins = new List<Models.Checkin>();
-            checkins = Models.Checkin.GetAll();
+            List<Models.Checkin> checkins = Models.Checkin.GetAll();
 
             return checkins;
         }
 
         public static Models.Checkin GetCheckins(string id)
         {
-            int intCheckinId = int Parse(id);
-            Models.Checkin checkin = Models.Checkin.Get(intCheckinId);
-
-            return checkin;
-        }
-
-        public static Models.Checkin AlterarCheckin(string checkinId, string reservaId, string data_checkin)
-        {
-            int intCheckinId = int Parse(checkinId);
-            Models.Checkin checkin = Models.Checkin.Get(intCheckinId);
-            int intReservaId = int Parse(reservaId);
-            Models.Reserva reserva = Models.Reserva.Get(intReservaId);
-
-            return checkin.Alterar(reserva, reserva, data_checkin);
-        }
-
-        public static Models.Checkin ExcluirCheckin(string id)
-        {
             try
             {
-                int idInt = int.Parse(id);
-
-                if (idInt != null)
+                if (id != null)
                 {
+                    int idInt = int.Parse(id);
+                    Models.Checkin checkin = Models.Checkin.Get(idInt);
 
-                    Models.Checkin checkin = Models.Checkin.Excluir(idInt);
-
-                    return idInt;
+                    return checkin;
                 }
                 {
                     throw new Exception("Checkin não existe");
@@ -61,7 +38,58 @@ namespace ProjetoHotelSerranoSenac
             catch (System.Exception)
             {
 
-                throw new Exception("Erro ao excluir Checking");
+                throw new Exception("Erro ao buscar Checkin");
+            }
+        }
+
+        public static Models.Checkin AlterarCheckin(string checkinId, string reservaId, string data_checkin)
+        {
+            try
+            {
+                if (checkinId != null)
+                {
+                    int idInt = int.Parse(checkinId);
+                    Models.Checkin checkin = Models.Checkin.Get(idInt);
+
+                    checkin.Data_checkin = data_checkin;
+                    checkin.ReservaId = int.Parse(reservaId);
+
+                    Models.Checkin.Alterar(checkin);
+
+                    return checkin;
+                }
+                {
+                    throw new Exception("Checkin não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao alterar Checkin");
+            }
+        }
+
+        public static Models.Checkin ExcluirCheckin(string id)
+        {
+            try
+            {
+                if (idInt != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Checkin checkin = Models.Checkin.Get(idInt);
+
+                    Models.Checkin.Excluir(idInt);
+
+                    return checkin;
+                }
+                {
+                    throw new Exception("Checkin não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao excluir Checkin");
             }
         }
     }

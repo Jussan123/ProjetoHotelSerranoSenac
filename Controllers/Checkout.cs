@@ -4,52 +4,79 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Checkout
     {
-        public static Models.Checkout CadastrarCheckout(string checkoutId, string reservaId, string data_checkout)
+        public static Models.Checkout CadastrarCheckout(string reservaId, string data_checkout)
         {
-            int intCheckoutId = int.Parse(checkoutId);
-            Models.Checkout checkout = Models.Checkout.Get(intCheckoutId);
-
             int intReservaId = int.Parse(reservaId);
-            Models.Checkout reserva = Models.Checkout.Get(intReservaId);
+            Models.Reserva reserva = Models.Reserva.Get(intReservaId);
 
-            return new Models.Checkout.Cadastrar(checkout, reserva, data_checkout);
+            Models.Checkout checkout = Models.Checkout(reserva, data_checkout);
+            return Models.Checkout.Cadastrar(checkout);
         }
 
         public static List<Models.Checkout> GetAllCheckouts()
         {
-            List<Models.Checkout> checkouts = new List<Models.Checkout>();
-            checkouts = Models.Checkout.GetAll();
+            List<Models.Checkout> checkouts = Models.Checkout.GetAll();
 
             return checkouts;
         }
 
         public static Models.Checkout GetCheckout(string id)
         {
-            int intCheckoutId = int.Parse(id);
-            Models.Checkout checkout = Models.Checkout.Get(intCheckoutId);
+            try
+            {
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Checkout checkout = Models.Checkout.Get(idInt);
 
-            return checkout;
+                    return checkout;
+                }
+                {
+                    throw new Exception("Checkout não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao buscar Checkout");
+            }
         }
 
         public static Models.Checkout AlterarCheckout(string checkoutId, string reservaId, string data_checkin)
         {
-            int intCheckoutId = int.Parse(checkoutId);
-            Models.Checkout checkout = Models.Checkout.Get(intCheckoutId);
+            try
+            {
+                if (checkoutId != null)
+                {
+                    int idInt = int.Parse(checkoutId);
+                    Models.Checkout checkout = Models.Checkout.Get(idInt);
 
-            int intReservaId = int.Parse(reservaId);
-            Models.Checkout reserva = Models.Checkout.Get(intReservaId);
+                    checkout.Data_checkin = data_checkin;
+                    checkout.ReservaId = int.Parse(reservaId);
 
-            return Models.Checkout.Alter(checkout, reserva, data_checkin);
+                    Models.Checkout.Alterar(checkout);
+
+                    return checkout;
+                }
+                {
+                    throw new Exception("Checkout não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao alterar Checkout");
+            }
         }
 
         public static Models.Checkout ExcluirCheckout(string id)
         {
             try
             {
-                int intId = int.Parse(id);
-
-                if (intId != null)
+            
+                if (id != null)
                 {
+                    int intId = int.Parse(id);
                     Models.Checkout checkout = Models.Checkout.Get(intId);
                     checkout.Excluir();
 

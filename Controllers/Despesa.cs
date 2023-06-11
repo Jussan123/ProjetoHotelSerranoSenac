@@ -22,7 +22,7 @@ namespace ProjetoHotelSerranoSenac
         {
             List<Models.Despesa> Despesas = new List<Models.Despesa>();
             Despesas = Models.Despesa.GetAll();
-            
+
             return Despesas;
         }
 
@@ -30,7 +30,7 @@ namespace ProjetoHotelSerranoSenac
         {
             int intDespesaId = int.Parse(id);
             Models.Despesa despesa = Models.Despesa.Get(intDespesaId);
-            
+
             return despesa;
         }
 
@@ -50,7 +50,7 @@ namespace ProjetoHotelSerranoSenac
 
         public static Models.Despesa Excluir(string id)
         {
-            
+
             try
             {
                 int intDespesaId = int.Parse(id);
@@ -60,7 +60,7 @@ namespace ProjetoHotelSerranoSenac
                 {
                     Models.Despesa despesa = Models.Despesa.Get(intDespesaId);
                     despesa.Excluir();
-                    
+
                     return despesa;
                 }
                 else
@@ -70,7 +70,7 @@ namespace ProjetoHotelSerranoSenac
             }
             catch (System.Exception)
             {
-                
+
                 throw new Exception("Erro ao excluir Despesa!");
             }
         }
