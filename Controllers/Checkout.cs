@@ -9,7 +9,7 @@ namespace ProjetoHotelSerranoSenac
             int intReservaId = int.Parse(reservaId);
             Models.Reserva reserva = Models.Reserva.Get(intReservaId);
 
-            Models.Checkout checkout = Models.Checkout(reserva, data_checkout);
+            Models.Checkout checkout = new Models.Checkout(reserva, data_checkout);
             return Models.Checkout.Cadastrar(checkout);
         }
 
@@ -76,9 +76,9 @@ namespace ProjetoHotelSerranoSenac
             
                 if (id != null)
                 {
-                    int intId = int.Parse(id);
-                    Models.Checkout checkout = Models.Checkout.Get(intId);
-                    checkout.Excluir();
+                    int idInt = int.Parse(id);
+                    Models.Checkout checkout = Models.Checkout.Get(idInt);
+                    Models.Checkout.Excluir(idInt);
 
                     return checkout;
                 }
@@ -92,7 +92,5 @@ namespace ProjetoHotelSerranoSenac
                 throw new Exception("Erro ao excluir checkout");
             }
         }
-
-
     }
 }
