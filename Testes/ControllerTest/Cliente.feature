@@ -44,7 +44,7 @@ Cenário: Excluir Cliente nulo
     Quando eu chamar o método ExcluirCliente com o ID
     Então eu devo obter uma exceção "Cliente não encontrado"
 
-Exemplo:
-            | ID | Nome    | Email             | Telefone     | IDHotel |
-            | 1  | Mariana | mariana@test.com  | 47 988248426 | 1       |
-            | 2  | João    | joazinho@test.com | 47 999999999 | 2       |
+            Exemplos:
+            | ID | Nome     | Email               | Telefone     | IDHotel |
+            | 1  | John Doe | johndoe@example.com | 47 123456789 | 123     |
+            | 2  | Jane Doe | janedoe@example.com | 47 987654321 | 456     |
