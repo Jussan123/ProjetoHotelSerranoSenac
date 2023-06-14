@@ -35,7 +35,7 @@ Cenário: Excluir Checkout
     Quando eu chamar o método ExcluirCheckout com o ID
     Então eu devo obter o Checkout excluído
 
-Exemplo:
+            Exemplos:
             | IDCheckout | IDReserva | DataCheckout |
             | 1          | 2         | 2023-06-08   |
             | 2          | 3         | 2023-06-09   |

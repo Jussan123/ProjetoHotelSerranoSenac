@@ -38,8 +38,7 @@ Cenário: Excluir Administrador
     Quando eu chamar o método ExcluirAdministrador com o ID
     Então eu devo obter o Administrador excluído
 
-Exemplos:
-            | nome            | email                 | senha    | idHotel |
-            | Mariana Santana | "mariana@test.com"    | nsjfsc   | 254     |
-            | John Doe        | "johndoe@example.com" | password | 123     |
-            | Maria Silva     | "mariazinha@test.com" | 123456   | 789     |
+            Exemplos:
+            | nome     | email                 | senha       | idHotel |
+            | John Doe | "johndoe@example.com" | password    | 123     |
+            | Jane Doe | "janedoe@example.com" | newpassword | 456     |
