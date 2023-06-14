@@ -11,7 +11,7 @@ namespace ProjetoHotelSerranoSenac.Models
         public int Id { get; set; }
         public int Quarto { get; set; }
         public DateTime Data { get; set; }
-        public int CheckoutId { get; set; }
+        public int? CheckoutId { get; set; }
 
         public Limpeza() { }
 
