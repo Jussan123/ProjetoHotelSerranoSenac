@@ -21,3 +21,11 @@ C:\Users\vitor\Desktop\TrabalhoHotel\ProjetoHotelSerranoSenac\obj\Debug\net7.0-w
 C:\Users\vitor\Desktop\TrabalhoHotel\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.dll
 C:\Users\vitor\Desktop\TrabalhoHotel\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\refint\ProjetoHotelSerranoSenac.dll
 C:\Users\vitor\Desktop\TrabalhoHotel\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.pdb
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.csproj.AssemblyReference.cache
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.AssemblyInfoInputs.cache
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.AssemblyInfo.cs
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.csproj.CoreCompileInputs.cache
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.dll
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\refint\ProjetoHotelSerranoSenac.dll
+C:\Users\vitor.silva16\Desktop\Final\ProjetoHotelSerranoSenac\obj\Debug\net7.0-windows\ProjetoHotelSerranoSenac.pdb
