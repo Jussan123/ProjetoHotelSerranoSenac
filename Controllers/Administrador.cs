@@ -8,12 +8,7 @@ namespace ProjetoHotelSerranoSenac
         {
             int intHotelId = int.Parse(hotelId);
             Models.Hotel hotel = Models.Hotel.Get(intHotelId);
-
-<<<<<<< HEAD
             Models.Administrador administrador = new Models.Administrador(nome, email, senha, hotel);
-=======
-            Models.Administrador administrador = new Models.Administrador(nome, email, senha, hotelId);
->>>>>>> main
             return Models.Administrador.Cadastrar(administrador);
         }
 
@@ -26,8 +21,6 @@ namespace ProjetoHotelSerranoSenac
 
         public static Models.Administrador GetAdministrador(string id)
         {
-<<<<<<< HEAD
-=======
             try
             {
                 if (id != null)
@@ -35,59 +28,6 @@ namespace ProjetoHotelSerranoSenac
                     int idInt = int.Parse(id);
                     Models.Administrador administrador = Models.Administrador.Get(idInt);
 
-                    return administrador;
-                }
-                {
-                    throw new Exception("Administrador não existe");
-                }
-            }
-            catch (System.Exception)
-            {
-
-                throw new Exception("Erro ao buscar administrador");
-            }
-        }
-
-        public static Models.Administrador AlterarAdministrador(string administradorId, string nome, string email, string senha, string hotelId)
-        {
-            try
-            {
-                if (administradorId != null)
-                {
-                    int idInt = int.Parse(administradorId);
-                    Models.Administrador administrador = Models.Administrador.Get(idInt);
-
-                    administrador.Nome = nome;
-                    administrador.Email = email;
-                    administrador.Senha = senha;
-                    administrador.HotelId = int.Parse(hotelId);
-
-                    Models.Administrador.Alterar(administrador);
-
-                    return administrador;
-                }
-                {
-                    throw new Exception("Administrador não existe");
-                }
-            }
-            catch (System.Exception)
-            {
-
-                throw new Exception("Erro ao alterar administrador");
-            }
-        }
-
-        public static Models.Administrador ExcluirAdministrador(string id)
-        {
->>>>>>> main
-            try
-            {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Administrador administrador = Models.Administrador.Get(idInt);
-
-<<<<<<< HEAD
                     return administrador;
                 }
                 {
@@ -139,8 +79,6 @@ namespace ProjetoHotelSerranoSenac
                     int idInt = int.Parse(id);
                     Models.Administrador administrador = Models.Administrador.Get(idInt);
 
-=======
->>>>>>> main
                     Models.Administrador.Excluir(idInt);
 
                     return administrador;
