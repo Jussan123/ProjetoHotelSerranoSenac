@@ -10,7 +10,7 @@ namespace ProjetoHotelSerranoSenac.Models
     {
         public int Id { get; set; }
         public int ReservaId { get; set; }
-        public Reserva.Reserva Reserva { get; set; }
+        public Reserva Reserva { get; set; }
         public DateTime DataCheckin { get; set; }
 
         public Checkin() { }
