@@ -7,10 +7,10 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
 {
     public interface ICreateReadUpdateDelete
     {
-        public T Cadastrar(T obj);
-        public IEnumerable<T> GetAll();
-        public T Get(int id);
-        public T Alterar(T obj);
-        public void Excluir(int id);
+        public static T Cadastrar(T obj);
+        public static IEnumerable<T> GetAll();
+        public static T Get(int id);
+        public static T Alterar(T obj);
+        public static void Excluir(int id);
     }
 }
