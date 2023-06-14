@@ -4,56 +4,85 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Cliente
     {
-       public static Models.Cliente CadastrarCliente(string clienteId, string nome, string email, string telefone, string hotelId)
-       {
-            int intClienteId = int.Parse(clienteId);
-            Models.Cliente cliente = Models.Cliente.Get(intClienteId);
-
+        public static Models.Cliente CadastrarCliente(string nome, string email, string telefone, string hotelId)
+        {
             int intHotelId = int.Parse(hotelId);
             Models.Hotel hotel = Models.Hotel.Get(intHotelId);
 
-            return new Models.Cliente.Cadastrar(cliente, nome, email, telefone, hotel);
-       }
+            Models.Cliente cliente = new Models.Cliente(nome, email, telefone, hotel);
 
-       public static Models.Cliente GetCliente(string id)
-       {
-            int intClienteId = int.Parse(id);
-            Models.Cliente cliente = Models.Cliente.Get(intClienteId);
+            return Models.Cliente.Cadastrar(cliente);
+        }
 
-            return cliente;
-       }
-
-       public static List<Models.Cliente> GetAllClientes()
-       {
-            List<Models.Cliente> clientes = new List<Models.Cliente>();
-            clientes = Models.Cliente.GetAll();
-
-            return clientes;
-       }
-
-       public static Models.Cliente AlterarCliente(string clienteId, string nome, string email, string telefone, string hotelId)
-       {
-            int intClienteId = int.Parse(clienteId);
-            Models.Cliente cliente = Models.Cliente.Get(intClienteId);
-
-            int intHotelId = int.Parse(hotelId);
-            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
-
-            return Models.Cliente.Alterar(cliente, nome, email, telefone, hotel);
-       }
-
-       public static Models.Cliente ExcluirCliente(string id)
-       {
+        public static Models.Cliente GetCliente(string id)
+        {
             try
             {
-                int intClienteId = int.Parse(id);
-
-                if (intClienteId != null)
-
+                if (id != null)
                 {
-                    Models.Cliente cliente = Models.Cliente.Get(intClienteId);
-                    cliente.Excluir();
-                    
+                    int idInt = int.Parse(id);
+                    Models.Cliente cliente = Models.Cliente.Get(idInt);
+
+                    return cliente;
+                }
+                {
+                    throw new Exception("Cliente não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao buscar Cliente");
+            }
+        }
+
+        public static List<Models.Cliente> GetAllClientes()
+        {
+            List<Models.Cliente> clientes = Models.Cliente.GetAll();
+
+            return clientes;
+        }
+
+        public static Models.Cliente AlterarCliente(string clienteId, string nome, string email, string telefone, string hotelId)
+        {
+
+            try
+            {
+                if (clienteId != null)
+                {
+                    int idInt = int.Parse(clienteId);
+                    Models.Cliente cliente = Models.Cliente.Get(idInt);
+
+                    cliente.Nome = nome;
+                    cliente.Email = email;
+                    cliente.Telefone = telefone;
+                    cliente.HotelId = int.Parse(hotelId);
+
+                    Models.Cliente.Alterar(cliente);
+
+                    return cliente;
+                }
+                {
+                    throw new Exception("Cliente não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao alterar Cliente");
+            }
+        }
+
+        public static Models.Cliente ExcluirCliente(string id)
+        {
+            try
+            {
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Cliente cliente = Models.Cliente.Get(idInt);
+                    Models.Cliente.Excluir(idInt);
+
                     return cliente;
                 }
                 else
@@ -63,10 +92,10 @@ namespace ProjetoHotelSerranoSenac
             }
             catch (System.Exception)
             {
-                
+
                 throw new Exception("Erro ao excluir Cliente!");
             }
-       }
-       
+        }
+
     }
 }

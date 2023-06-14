@@ -4,63 +4,86 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Despesa
     {
-        public static Models.Cliente CadastrarDespesa(string despesaId, string reservaId, string produtoId, string valor, string quantidade)
+        public static Models.Despesa CadastrarDespesa(string reservaId, string produtoId, string valor, string quantidade)
         {
-            int intDespesaId = int Parse(despesaId);
-            Models.Despesa despesa = Models.Despesa.Get(intDespesaId);
-
             int intReservaId = intParse(reservaId);
             Models.Reserva reserva = Models.Reserva.Get(intReserva);
 
             int intProdutoId = intParse(produtoId);
             Models.Produto produto = Models.Produto.Get(intProdutoId);
 
-            return new Models.Despesa.Cadastrar(despesa.Id, reserva.Id, produto.Id, valor, quantidade);
+            Models.Despesa despesa = Models.Despesa.Get(reserva, produto, valor, quantidade);
+            return Models.Despesa.Cadastrar(despesa);
         }
 
         public static List<Models.Despesa> GetAllDespesas()
         {
-            List<Models.Despesa> Despesas = new List<Models.Despesa>();
-            Despesas = Models.Despesa.GetAll();
-            
+            List<Models.Despesa> Despesas = Models.Despesa.GetAll();
+
             return Despesas;
         }
 
         public static Models.Despesa GetDespesa(string id)
         {
-            int intDespesaId = int.Parse(id);
-            Models.Despesa despesa = Models.Despesa.Get(intDespesaId);
-            
-            return despesa;
+            try
+            {
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Despesa despesa = Models.Despesa.Get(idInt);
+
+                    return despesa;
+                }
+                {
+                    throw new Exception("Despesa não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao buscar Despesa");
+            }
         }
 
         public static Models.Despesa AlterarDespesa(string despesaId, string reservaId, string produtoId, string valor, string quantidade)
         {
-            int intDespesaId = intParse(despesaId);
-            Models.Despesa despesa = Models.Despesa.Get(intDespesaId);
-
-            int intReservaId = intParse(reservaId);
-            Models.Reserva reserva = Models.Reserva.Get(intReservaId);
-
-            int intProdutoId = intParse(produtoId);
-            Models.Produto produto = Models.Produto.Get(intProdutoId);
-
-            return Models.Despesa.Alterar(despesa, reserva, produto, valor, quantidade);
-        }
-
-        public static Models.Despesa Excluir(string id)
-        {
-            
             try
             {
-                int intDespesaId = int.Parse(id);
-
-                if (intDespesaId != null)
-
+                if (despesaId != null)
                 {
-                    Models.Despesa despesa = Models.Despesa.Get(intDespesaId);
-                    despesa.Excluir();
-                    
+                    int idInt = int.Parse(despesaId);
+                    Models.Despesa despesa = Models.Despesa.Get(idInt);
+
+                    despesa.ReservaId = int.Parse(reservaId);
+                    despesa.ProdutoId = int.Parse(produtoId);
+                    despesa.Valor = valor;
+                    despesa.Quantidade = quantidade;
+
+                    Models.Despesa.Alterar(despesa);
+
+                    return despesa;
+                }
+                {
+                    throw new Exception("Despesa não existe");
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception("Erro ao alterar Despesa");
+            }
+        }
+
+        public static Models.Despesa ExcluirDespesa(string id)
+        {
+            try
+            {
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Despesa despesa = Models.Despesa.Get(idInt);
+                    Models.Despesa.Excluir(idInt);
+
                     return despesa;
                 }
                 else
@@ -70,7 +93,7 @@ namespace ProjetoHotelSerranoSenac
             }
             catch (System.Exception)
             {
-                
+
                 throw new Exception("Erro ao excluir Despesa!");
             }
         }
