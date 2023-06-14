@@ -39,7 +39,7 @@ Cenário: Excluir Despesa
     Quando eu chamar o método Excluir com o ID
     Então eu devo obter a Despesa excluída
 
-Exemplo:
+            Exemplos:
             | idDespesa | idReserva | idProduto | valor  | quantidade |
             | 1         | 123       | 456       | 100.00 | 2          |
             | 2         | 123       | 456       | 150.00 | 3          |
