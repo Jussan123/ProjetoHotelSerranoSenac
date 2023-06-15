@@ -13,7 +13,7 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
             db.Set<T>().Add(obj);
             db.SaveChanges();
 
-            return objCreated;
+            return obj;
         }
 
         public IEnumerable<T> GetAll()
