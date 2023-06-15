@@ -35,7 +35,7 @@ Cenário: Excluir Check-in
     Quando eu chamar o método ExcluirCheckin com o ID
     Então eu devo obter o Check-in excluído
 
-Exemplos:
+            Exemplos:
             | ID | Reserva | DataCheckin |
             | 1  | 123     | 2023-06-08  |
             | 2  | 456     | 2023-06-09  |

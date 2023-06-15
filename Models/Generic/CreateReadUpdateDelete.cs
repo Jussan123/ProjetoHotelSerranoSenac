@@ -7,7 +7,7 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
 {
     public abstract class CreateReadUpdateDelete<T> : ICreateReadUpdateDelete
     {
-        public T Cadastrar(T obj)
+        public static T Cadastrar(T obj)
         {
             T objCreated = new T();
             Banco.DataBase db = new Banco.DataBase();
@@ -17,7 +17,7 @@ namespace ProjetoHotelSerranoSenac.Models.Generic
             return objCreated;
         }
 
-        public IEnumerable<T> GetAll()
+        public static IEnumerable<T> GetAll()
         {
             Banco.DataBase db = new Banco.DataBase();
             return db.Set<T>().ToList();
