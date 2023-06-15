@@ -8,7 +8,7 @@ Recursos do sistema:
 • Os clientes solicita reservas para quartos disponíveis via telefone.
 • O atendente pode procurar quartos pelo ID.
 • O atendente pode visualizar as reservas atuais e futuras dos clientes.
-• O atendente pode modificar ou cancelar as reservas de cada cliente, desde que solicitado pelo mesmo e dentro dos prazos e políticas definidos pelo hotel.
+• O atendente pode modificar ou cancelar as reservas de cada cliente, desde que solicitado pelo mesmo e dentro de até 24h antes do chek-in.
 
 2 > Check-in e Check-out:
 • O atendente registra o check-in e check-out dos hóspedes.
@@ -34,7 +34,7 @@ Recursos do sistema:
 • Os dados dos hóspedes, reservas, despesas e produtos são armazenados de forma segura.
 
 6 > Relatórios:
-• O sistema permite gerar relatórios sobre as despesas, reservas, produtos, hóspedes, limpeza e funcionários.
+• O sistema permite gerar relatórios sobre as despesas, reservas, produtos, hóspedes, limpeza, funcionários e disponibilidade de quartos.
 • Os relatórios podem ser filtrados por datas, quartos, hóspedes, etc.
 
 Observações:
