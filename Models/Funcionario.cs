@@ -11,22 +11,19 @@ namespace ProjetoHotelSerranoSenac.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email {get; set;}
+        public string Role {get; set;}
         public string Telefone {get; set;}
-        public decimal Salario {get; set;}
-        public string Funcao {get; set;}
-        public int HotelId {get; set;}
-        public Hotel Hotel {get; set;}
+        public double Salario {get; set;}
 
         public Funcionario() { }
 
-        public Funcionario(string nome, string email, string telefone, decimal salario, string funcao, int hotelId)
+        public Funcionario(string nome, string email, string telefone, string role, double salario)
         {
             Nome = nome;
             Email = email;
             Telefone = telefone;
+            Role = role;
             Salario = salario;
-            Funcao = funcao;
-            HotelId = hotelId;
         }
     }
 }

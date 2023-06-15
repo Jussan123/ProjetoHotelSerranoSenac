@@ -8,8 +8,8 @@ namespace ProjetoHotelSerranoSenac
         public static Models.Quarto quartoCrud = new Models.Quarto();
         public static Models.Reserva reservaCrud = new Models.Reserva();
         public static Models.Cliente clienteCrud = new Models.Cliente();
-        public static Models.Funcionario funcionarioCrud = new Models.Funcionario();
-        public static Models.Reserva CadastrarReserva(string clienteId, string quartoId, string data_checkin, string data_checkout, string preco, string hotelId, string funcionarioId)
+
+        public static Models.Reserva CadastrarReserva(string clienteId, string quartoId, string dataCheckin, string dataCheckout, string preco, string hotelId)
         {
             Models.Cliente cliente = clienteCrud.Get(int.Parse(clienteId));
 
@@ -17,9 +17,7 @@ namespace ProjetoHotelSerranoSenac
 
             Models.Hotel hotel = hotelCrud.Get(int.Parse(hotelId));
 
-            Models.Funcionario funcionario = funcionarioCrud.Get(int.Parse(funcionarioId));
-
-            Models.Reserva reserva = new Models.Reserva(cliente.Id, quarto.Id, DateTime.Parse(data_checkin), DateTime.Parse(data_checkout), Decimal.Parse(preco), hotel.Id, funcionario.Id);
+            Models.Reserva reserva = new Models.Reserva(cliente.Id, quarto.Id, DateTime.Parse(dataCheckin), DateTime.Parse(dataCheckout), Double.Parse(preco), hotel.Id);
             return reservaCrud.Cadastrar(reserva);
         }
 
@@ -52,7 +50,7 @@ namespace ProjetoHotelSerranoSenac
             }
         }
 
-        public static Models.Reserva AlterarReserva(string reservaId, string clienteId, string quartoId, string data_checkin, string data_checkout, string preco, string hotelId, string funcionarioId)
+        public static Models.Reserva AlterarReserva(string reservaId, string clienteId, string quartoId, string dataCheckin, string dataCheckout, string preco, string hotelId)
         {
             try
             {
@@ -63,11 +61,10 @@ namespace ProjetoHotelSerranoSenac
 
                     reserva.ClienteId = int.Parse(clienteId);
                     reserva.QuartoId = int.Parse(quartoId);
-                    reserva.DataCheckin = DateTime.Parse(data_checkin);
-                    reserva.DataCheckout = DateTime.Parse(data_checkout);
-                    reserva.Preco = Decimal.Parse(preco);
+                    reserva.DataCheckin = DateTime.Parse(dataCheckin);
+                    reserva.DataCheckout = DateTime.Parse(dataCheckout);
+                    reserva.Preco = Double.Parse(preco);
                     reserva.HotelId = int.Parse(hotelId);
-                    reserva.FuncionarioId = int.Parse(funcionarioId);
 
                     reservaCrud.Alterar(reserva);
 

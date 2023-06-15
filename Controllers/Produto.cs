@@ -5,12 +5,10 @@ namespace ProjetoHotelSerranoSenac
     public class Produto
     {
         public static Models.Produto produtoCrud = new Models.Produto();
-        public static Models.Hotel hotelCrud = new Models.Hotel();
-        public static Models.Produto CadastrarProduto(string nome, string preco, string quantidade, string hotelId)
-        {
-            Models.Hotel hotel = hotelCrud.Get(int.Parse(hotelId));
 
-            Models.Produto produto = new Models.Produto(nome, Double.Parse(preco), int.Parse(quantidade), hotel.Id);
+        public static Models.Produto CadastrarProduto(string nome, string preco, string quantidade, string precoVenda, string precoCompra)
+        {
+            Models.Produto produto = new Models.Produto(nome, Double.Parse(preco), int.Parse(quantidade), Double.Parse(precoVenda), Double.Parse(precoCompra));
             return produtoCrud.Cadastrar(produto);
         }
 
@@ -43,7 +41,7 @@ namespace ProjetoHotelSerranoSenac
             }
         }
 
-        public static Models.Produto AlterarProduto(string produtoId, string nome, string preco, string quantidade, string hotelId)
+        public static Models.Produto AlterarProduto(string produtoId, string nome, string preco, string quantidadeEstoque, string precoVenda, string precoCompra)
         {
             try
             {
@@ -54,8 +52,9 @@ namespace ProjetoHotelSerranoSenac
 
                     produto.Nome = nome;
                     produto.Preco = Double.Parse(preco);
-                    produto.Quantidade = int.Parse(quantidade);
-                    produto.HotelId = int.Parse(hotelId);
+                    produto.QuantidadeEstoque = int.Parse(quantidadeEstoque);
+                    produto.PrecoVenda = Double.Parse(precoVenda);
+                    produto.PrecoCompra = Double.Parse(precoCompra);
 
                     produtoCrud.Alterar(produto);
 

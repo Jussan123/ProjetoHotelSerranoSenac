@@ -5,13 +5,10 @@ namespace ProjetoHotelSerranoSenac
     public class Funcionario
     {
         public static Models.Funcionario funcionarioCrud = new Models.Funcionario();
-        public static Models.Hotel hotelCrud = new Models.Hotel();
-        public static Models.Funcionario CadastrarFuncionario(string nome, string email, string telefone, string salario, string funcao, string hotelId)
-        {
-            int intHotelId = int.Parse(hotelId);
-            Models.Hotel hotel = hotelCrud.Get(intHotelId);
 
-            Models.Funcionario funcionario = new Models.Funcionario(nome, email, telefone, Decimal.Parse(salario), funcao, hotel.Id);
+        public static Models.Funcionario CadastrarFuncionario(string nome, string email, string telefone, string role, string salario)
+        {
+            Models.Funcionario funcionario = new Models.Funcionario(nome, email, telefone, role, Double.Parse(salario));
             return funcionarioCrud.Cadastrar(funcionario);
         }
 
@@ -44,7 +41,7 @@ namespace ProjetoHotelSerranoSenac
             }
         }
 
-        public static Models.Funcionario AlterarFuncionario(string funcionarioId, string nome, string email, string telefone, string salario, string funcao, string hotelId)
+        public static Models.Funcionario AlterarFuncionario(string funcionarioId, string nome, string email, string telefone, string role, string salario)
         {
             try
             {
@@ -56,9 +53,8 @@ namespace ProjetoHotelSerranoSenac
                     funcionario.Nome = nome;
                     funcionario.Email = email;
                     funcionario.Telefone = telefone;
-                    funcionario.Salario = Decimal.Parse(salario);
-                    funcionario.Funcao = funcao;
-                    funcionario.HotelId = int.Parse(hotelId);
+                    funcionario.Salario = Double.Parse(salario);
+                    funcionario.Role = role;
 
                     funcionarioCrud.Alterar(funcionario);
 
