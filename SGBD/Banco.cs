@@ -11,7 +11,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Model;
+using ProjetoHotelSerranoSenac.Models;
 using System.Data.SqlClient;
 using System.Linq;
 
@@ -29,18 +29,8 @@ namespace Banco
         public DbSet<Limpeza> Limpezas { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Quarto> Quartos { get; set; }
-        public DbSet<Relatorio> Relatorios { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // criação das chaves primárias e estrangeiras das tabelas no banco de dados pelo Entity Framework
-            modelBuilder.Entity<Hotel>(entity =>
-            {
-                entity.HasKey(e => e.hotelId);//chave primária
-            });
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)//configuração do banco de dados
         {

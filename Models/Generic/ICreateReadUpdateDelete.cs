@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace ProjetoHotelSerranoSenac.Models.Generic
 {
-    public interface ICreateReadUpdateDelete
+    public interface ICreateReadUpdateDelete<T>
     {
-        public static T Cadastrar(T obj);
-        public static IEnumerable<T> GetAll();
-        public static T Get(int id);
-        public static T Alterar(T obj);
-        public static void Excluir(int id);
+        T Cadastrar(T obj);
+        IEnumerable<T> GetAll();
+        T Get(int id);
+        T Alterar(T obj);
+        void Excluir(int id);
     }
 }
