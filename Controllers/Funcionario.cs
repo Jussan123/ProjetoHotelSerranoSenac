@@ -4,18 +4,20 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Funcionario
     {
+        public static Models.Funcionario funcionarioCrud = new Models.Funcionario();
+        public static Models.Hotel hotelCrud = new Models.Hotel();
         public static Models.Funcionario CadastrarFuncionario(string nome, string email, string telefone, string salario, string funcao, string hotelId)
         {
-            int intHotelId = intParse(hotelId);
-            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
+            int intHotelId = int.Parse(hotelId);
+            Models.Hotel hotel = hotelCrud.Get(intHotelId);
 
-            Models.Funcionario funcionario = new Models.Despesa.Get(produto, nome, email, telefone, salario, funcao, hotel);
-            return Models.Funcionario.Cadastrar(funcionario);
+            Models.Funcionario funcionario = new Models.Funcionario(nome, email, telefone, Decimal.Parse(salario), funcao, hotel.Id);
+            return funcionarioCrud.Cadastrar(funcionario);
         }
 
-        public static List<Models.Funcionario> GetAllFuncionarios()
+        public static IEnumerable<Models.Funcionario> GetAllFuncionarios()
         {
-            List<Models.Funcionario> funcionario = Models.Funcionario.GetAll();
+            IEnumerable<Models.Funcionario> funcionario = funcionarioCrud.GetAll();
 
             return funcionario;
         }
@@ -27,7 +29,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Funcionario funcionario = Models.Funcionario.Get(idInt);
+                    Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
 
                     return funcionario;
                 }
@@ -49,16 +51,16 @@ namespace ProjetoHotelSerranoSenac
                 if (funcionarioId != null)
                 {
                     int idInt = int.Parse(funcionarioId);
-                    Models.Funcionario funcionario = Models.Funcionario.Get(idInt);
+                    Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
 
                     funcionario.Nome = nome;
                     funcionario.Email = email;
                     funcionario.Telefone = telefone;
-                    funcionario.Salario = salario;
+                    funcionario.Salario = Decimal.Parse(salario);
                     funcionario.Funcao = funcao;
                     funcionario.HotelId = int.Parse(hotelId);
 
-                    Models.Funcionario.Alterar(funcionario);
+                    funcionarioCrud.Alterar(funcionario);
 
                     return funcionario;
                 }
@@ -80,8 +82,8 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Funcionario funcionario = Models.Funcionario.Get(idInt);
-                    Models.Funcionario.Excluir(idInt);
+                    Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
+                    funcionarioCrud.Excluir(idInt);
 
                     return funcionario;
                 }

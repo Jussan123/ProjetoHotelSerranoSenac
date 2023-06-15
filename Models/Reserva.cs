@@ -18,10 +18,12 @@ namespace ProjetoHotelSerranoSenac.Models
         public decimal Preco { get; set; }
         public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
+        public int FuncionarioId { get; set; }
+        public Funcionario Funcionario { get; set; }
 
         public Reserva() { }
 
-        public Reserva(int clienteId, int quartoId, DateTime dataCheckin, DateTime dataCheckout, decimal preco, int hotelId)
+        public Reserva(int clienteId, int quartoId, DateTime dataCheckin, DateTime dataCheckout, decimal preco, int hotelId, int funcionarioId)
         {
             ClienteId = clienteId;
             QuartoId = quartoId;
@@ -29,6 +31,7 @@ namespace ProjetoHotelSerranoSenac.Models
             DataCheckout = dataCheckout;
             Preco = preco;
             HotelId = hotelId;
+            FuncionarioId = funcionarioId;
         }
     }
 }

@@ -4,18 +4,19 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Quarto
     {
+        public static Models.Hotel hotelCrud = new Models.Hotel();
+        public static Models.Quarto quartoCrud = new Models.Quarto();
         public static Models.Quarto CadastrarQuarto(string numero_quarto, string descricao, string valor, string disponivel, string hotelId)
         {
-            int intHotelId = intParse(hotelId);
-            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
+            Models.Hotel hotel = hotelCrud.Get(int.Parse(hotelId));
 
-            Models.Quarto quarto = new Models.Quarto.Get(numero_quarto, descricao, valor, disponivel, hotel);
-            return Models.Quarto.Cadastrar(quarto);
+            Models.Quarto quarto = new Models.Quarto(int.Parse(numero_quarto), descricao, Double.Parse(valor), disponivel != null && disponivel != "" ? true : false, hotel.Id);
+            return quartoCrud.Cadastrar(quarto);
         }
 
-        public static List<Models.Quarto> GetAllQuartos()
+        public static IEnumerable<Models.Quarto> GetAllQuartos()
         {
-            List<Models.Quarto> quarto = Models.Quarto.GetAll();
+            IEnumerable<Models.Quarto> quarto = quartoCrud.GetAll();
 
             return quarto;
         }
@@ -27,7 +28,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Quarto quarto = Models.Quarto.Get(idInt);
+                    Models.Quarto quarto = quartoCrud.Get(idInt);
 
                     return quarto;
                 }
@@ -49,15 +50,15 @@ namespace ProjetoHotelSerranoSenac
                 if (quartoId != null)
                 {
                     int idInt = int.Parse(quartoId);
-                    Models.Quarto quarto = Models.Quarto.Get(idInt);
+                    Models.Quarto quarto = quartoCrud.Get(idInt);
 
-                    quarto.Numero_quarto = numero_quarto;
+                    quarto.NumeroQuarto = int.Parse(numero_quarto);
                     quarto.Descricao = descricao;
-                    quarto.Valor = valor;
-                    quarto.Disponivel = disponivel;
+                    quarto.Valor = Double.Parse(valor);
+                    quarto.Disponivel = disponivel != null && disponivel != "" ? true : false;
                     quarto.HotelId = int.Parse(hotelId);
 
-                    Models.Quarto.Alterar(quarto);
+                    quartoCrud.Alterar(quarto);
 
                     return quarto;
                 }
@@ -79,8 +80,8 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Quarto quarto = Models.Quarto.Get(idInt);
-                    Models.Quarto.Excluir(idInt);
+                    Models.Quarto quarto = quartoCrud.Get(idInt);
+                    quartoCrud.Excluir(quarto.Id);
 
                     return quarto;
                 }

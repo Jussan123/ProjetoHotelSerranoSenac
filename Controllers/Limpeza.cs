@@ -4,24 +4,25 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Limpeza
     {
+        public static Models.Quarto quartoCrud = new Models.Quarto();
+        public static Models.Checkout checkoutCrud = new Models.Checkout();
+        public static Models.Funcionario funcionarioCrud = new Models.Funcionario();
+        public static Models.Limpeza limpezaCrud = new Models.Limpeza();
         public static Models.Limpeza CadastrarLimpeza(string quartoId, string data, string checkoutId, string funcionarioId)
         {
-            int intQuartoId = intParse(quartoId);
-            Models.Quarto quarto = Models.Quarto.Get(intQuartoId);
+            Models.Quarto quarto = quartoCrud.Get(int.Parse(quartoId));
 
-            int intCheckoutId = intParse(checkoutId);
-            Models.Checkout checkout = Models.Checkout.Get(intCheckoutId);
+            Models.Checkout checkout = checkoutCrud.Get(int.Parse(checkoutId));
 
-            int intFuncionarioId = intParse(funcionarioId);
-            Models.Funcionario funcionario = Models.Funcionario.Get(intFuncionarioId);
+            Models.Funcionario funcionario = funcionarioCrud.Get(int.Parse(funcionarioId));
 
-            Models.Limpeza limpeza = new Models.Despesa.Get(quarto, data, checkout, funcionario);
-            return Models.Limpeza.Cadastrar(limpeza);
+            Models.Limpeza limpeza = new Models.Limpeza(quarto.Id, DateTime.Parse(data), funcionario.Id, checkout.Id);
+            return limpezaCrud.Cadastrar(limpeza);
         }
 
-        public static List<Models.Limpeza> GetAllLimpezas()
+        public static IEnumerable<Models.Limpeza> GetAllLimpezas()
         {
-            List<Models.Limpeza> limpeza = Models.Limpeza.GetAll();
+            IEnumerable<Models.Limpeza> limpeza = limpezaCrud.GetAll();
 
             return limpeza;
         }
@@ -33,7 +34,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Limpeza limpeza = Models.Limpeza.Get(idInt);
+                    Models.Limpeza limpeza = limpezaCrud.Get(idInt);
 
                     return limpeza;
                 }
@@ -55,14 +56,14 @@ namespace ProjetoHotelSerranoSenac
                 if (limpezaId != null)
                 {
                     int idInt = int.Parse(limpezaId);
-                    Models.Limpeza limpeza = Models.Limpeza.Get(idInt);
+                    Models.Limpeza limpeza = limpezaCrud.Get(idInt);
 
                     limpeza.QuartoId = int.Parse(quartoId);
-                    limpeza.Data = data;
+                    limpeza.Data = DateTime.Parse(data);
                     limpeza.CheckoutId = int.Parse(checkoutId);
                     limpeza.FuncionarioId = int.Parse(funcionarioId);
 
-                    Models.limpeza.Alterar(limpeza);
+                    limpezaCrud.Alterar(limpeza);
 
                     return limpeza;
                 }
@@ -84,8 +85,8 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Limpeza limpeza = Models.Limpeza.Get(idInt);
-                    Models.Limpeza.Excluir(idInt);
+                    Models.Limpeza limpeza = limpezaCrud.Get(idInt);
+                    limpezaCrud.Excluir(idInt);
 
                     return limpeza;
                 }

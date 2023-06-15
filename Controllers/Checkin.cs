@@ -4,18 +4,21 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Checkin
     {
+        public static Models.Reserva reservaCrud = new Models.Reserva();
+        public static Models.Checkin checkinCrud = new Models.Checkin();
+
         public static Models.Checkin CadastrarCheckinstring(string reservaId, string data_checkin)
         {
             int intReservaId = int.Parse(reservaId);
-            Models.Reserva reserva = Models.Reserva.Get(intReservaId);
+            Models.Reserva reserva = reservaCrud.Get(intReservaId);
 
-            Models.Checkin checkin = new Models.Checkin(reserva, data_checkin);
-            return Models.Checkin.Cadastrar(checkin);
+            Models.Checkin checkin = new Models.Checkin(reserva.Id, DateTime.Parse(data_checkin));
+            return checkinCrud.Cadastrar(checkin);
         }
 
-        public static List<Models.Checkin> GetAllCheckins()
+        public static IEnumerable<Models.Checkin> GetAllCheckins()
         {
-            List<Models.Checkin> checkins = Models.Checkin.GetAll();
+            IEnumerable<Models.Checkin> checkins = checkinCrud.GetAll();
 
             return checkins;
         }
@@ -27,7 +30,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Checkin checkin = Models.Checkin.Get(idInt);
+                    Models.Checkin checkin = checkinCrud.Get(idInt);
 
                     return checkin;
                 }
@@ -49,12 +52,12 @@ namespace ProjetoHotelSerranoSenac
                 if (checkinId != null)
                 {
                     int idInt = int.Parse(checkinId);
-                    Models.Checkin checkin = Models.Checkin.Get(idInt);
+                    Models.Checkin checkin = checkinCrud.Get(idInt);
 
-                    checkin.Data_checkin = data_checkin;
+                    checkin.DataCheckin = DateTime.Parse(data_checkin);
                     checkin.ReservaId = int.Parse(reservaId);
 
-                    Models.Checkin.Alterar(checkin);
+                    checkinCrud.Alterar(checkin);
 
                     return checkin;
                 }
@@ -73,12 +76,12 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (idInt != null)
+                if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Checkin checkin = Models.Checkin.Get(idInt);
+                    Models.Checkin checkin = checkinCrud.Get(idInt);
 
-                    Models.Checkin.Excluir(idInt);
+                    checkinCrud.Excluir(idInt);
 
                     return checkin;
                 }

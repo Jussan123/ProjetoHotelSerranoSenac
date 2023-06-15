@@ -4,14 +4,16 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Cliente
     {
+        public static Models.Hotel hotelCrud = new Models.Hotel();
+        public static Models.Cliente clienteCrud = new Models.Cliente();
         public static Models.Cliente CadastrarCliente(string nome, string email, string telefone, string hotelId)
         {
             int intHotelId = int.Parse(hotelId);
-            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
+            Models.Hotel hotel = hotelCrud.Get(intHotelId);
 
-            Models.Cliente cliente = new Models.Cliente(nome, email, telefone, hotel);
+            Models.Cliente cliente = new Models.Cliente(nome, email, telefone, hotel.Id);
 
-            return Models.Cliente.Cadastrar(cliente);
+            return clienteCrud.Cadastrar(cliente);
         }
 
         public static Models.Cliente GetCliente(string id)
@@ -21,7 +23,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Cliente cliente = Models.Cliente.Get(idInt);
+                    Models.Cliente cliente = clienteCrud.Get(idInt);
 
                     return cliente;
                 }
@@ -36,9 +38,9 @@ namespace ProjetoHotelSerranoSenac
             }
         }
 
-        public static List<Models.Cliente> GetAllClientes()
+        public static IEnumerable<Models.Cliente> GetAllClientes()
         {
-            List<Models.Cliente> clientes = Models.Cliente.GetAll();
+            IEnumerable<Models.Cliente> clientes = clienteCrud.GetAll();
 
             return clientes;
         }
@@ -51,14 +53,14 @@ namespace ProjetoHotelSerranoSenac
                 if (clienteId != null)
                 {
                     int idInt = int.Parse(clienteId);
-                    Models.Cliente cliente = Models.Cliente.Get(idInt);
+                    Models.Cliente cliente = clienteCrud.Get(idInt);
 
                     cliente.Nome = nome;
                     cliente.Email = email;
                     cliente.Telefone = telefone;
                     cliente.HotelId = int.Parse(hotelId);
 
-                    Models.Cliente.Alterar(cliente);
+                    clienteCrud.Alterar(cliente);
 
                     return cliente;
                 }
@@ -80,8 +82,8 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Cliente cliente = Models.Cliente.Get(idInt);
-                    Models.Cliente.Excluir(idInt);
+                    Models.Cliente cliente = clienteCrud.Get(idInt);
+                    clienteCrud.Excluir(cliente.Id);
 
                     return cliente;
                 }

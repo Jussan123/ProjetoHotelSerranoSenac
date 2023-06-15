@@ -4,21 +4,23 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Despesa
     {
+        public static Models.Reserva reservaCrud = new Models.Reserva();
+        public static Models.Despesa despesaCrud = new Models.Despesa();
+        public static Models.Produto produtoCrud = new Models.Produto();
+
         public static Models.Despesa CadastrarDespesa(string reservaId, string produtoId, string valor, string quantidade)
         {
-            int intReservaId = intParse(reservaId);
-            Models.Reserva reserva = Models.Reserva.Get(intReserva);
+            Models.Reserva reserva = reservaCrud.Get(int.Parse(reservaId));
 
-            int intProdutoId = intParse(produtoId);
-            Models.Produto produto = Models.Produto.Get(intProdutoId);
+            Models.Produto produto = produtoCrud.Get(int.Parse(produtoId));
 
-            Models.Despesa despesa = Models.Despesa.Get(reserva, produto, valor, quantidade);
-            return Models.Despesa.Cadastrar(despesa);
+            Models.Despesa despesa = new Models.Despesa(reserva.Id, produto.Id, Decimal.Parse(valor), int.Parse(quantidade));
+            return despesaCrud.Cadastrar(despesa);
         }
 
-        public static List<Models.Despesa> GetAllDespesas()
+        public static IEnumerable<Models.Despesa> GetAllDespesas()
         {
-            List<Models.Despesa> Despesas = Models.Despesa.GetAll();
+            IEnumerable<Models.Despesa> Despesas = despesaCrud.GetAll();
 
             return Despesas;
         }
@@ -30,7 +32,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Despesa despesa = Models.Despesa.Get(idInt);
+                    Models.Despesa despesa = despesaCrud.Get(idInt);
 
                     return despesa;
                 }
@@ -52,14 +54,14 @@ namespace ProjetoHotelSerranoSenac
                 if (despesaId != null)
                 {
                     int idInt = int.Parse(despesaId);
-                    Models.Despesa despesa = Models.Despesa.Get(idInt);
+                    Models.Despesa despesa = despesaCrud.Get(idInt);
 
                     despesa.ReservaId = int.Parse(reservaId);
                     despesa.ProdutoId = int.Parse(produtoId);
-                    despesa.Valor = valor;
-                    despesa.Quantidade = quantidade;
+                    despesa.Valor = Decimal.Parse(valor);
+                    despesa.Quantidade = int.Parse(quantidade);
 
-                    Models.Despesa.Alterar(despesa);
+                    despesaCrud.Alterar(despesa);
 
                     return despesa;
                 }
@@ -81,8 +83,8 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Despesa despesa = Models.Despesa.Get(idInt);
-                    Models.Despesa.Excluir(idInt);
+                    Models.Despesa despesa = despesaCrud.Get(idInt);
+                    despesaCrud.Excluir(idInt);
 
                     return despesa;
                 }

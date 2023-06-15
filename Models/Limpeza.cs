@@ -9,16 +9,20 @@ namespace ProjetoHotelSerranoSenac.Models
     public class Limpeza : CreateReadUpdateDelete<Limpeza>
     {
         public int Id { get; set; }
-        public int Quarto { get; set; }
+        public int QuartoId { get; set; }
+        public Quarto Quarto { get; set; }
         public DateTime Data { get; set; }
         public int? CheckoutId { get; set; }
+        public int FuncionarioId { get; set; }
+        public Funcionario Funcionario { get; set; }
 
         public Limpeza() { }
 
-        public Limpeza(int quarto, DateTime data, int? checkoutId = null)
+        public Limpeza(int quarto, DateTime data, int idFuncionario, int? checkoutId = null)
         {
-            Quarto = quarto;
+            QuartoId = quarto;
             Data = data;
+            FuncionarioId = idFuncionario;
             CheckoutId = checkoutId;
         }
     }

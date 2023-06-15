@@ -11,12 +11,13 @@ namespace ProjetoHotelSerranoSenac.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public double Preco { get; set; }
+        public int Quantidade { get; set; }
         public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
 
         public Produto() { }
 
-        public Produto(string nome, double preco, int hotelId)
+        public Produto(string nome, double preco, int quantidade, int hotelId)
         {
             Nome = nome;
             Preco = preco;

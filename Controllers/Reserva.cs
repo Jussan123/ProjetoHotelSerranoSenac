@@ -4,24 +4,28 @@ namespace ProjetoHotelSerranoSenac
 {
     public class Reserva
     {
-        public static Models.Reserva CadastrarReserva(string clienteId, string quartoId, string data_checkin, string data_checkout, string preco, string hotelId)
+        public static Models.Hotel hotelCrud = new Models.Hotel();
+        public static Models.Quarto quartoCrud = new Models.Quarto();
+        public static Models.Reserva reservaCrud = new Models.Reserva();
+        public static Models.Cliente clienteCrud = new Models.Cliente();
+        public static Models.Funcionario funcionarioCrud = new Models.Funcionario();
+        public static Models.Reserva CadastrarReserva(string clienteId, string quartoId, string data_checkin, string data_checkout, string preco, string hotelId, string funcionarioId)
         {
-            int intClienteId = int.Parse(clienteId);
-            Models.Cliente cliente = Models.Cliente.Get(intClienteId);
+            Models.Cliente cliente = clienteCrud.Get(int.Parse(clienteId));
 
-            int intQuartoId = intParse(quartoId);
-            Models.Quarto quarto = Models.Quarto.Get(intQuartoId);
+            Models.Quarto quarto = quartoCrud.Get(int.Parse(quartoId));
 
-            int intHotelId = intParse(hotelId);
-            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
+            Models.Hotel hotel = hotelCrud.Get(int.Parse(hotelId));
 
-            Models.Reserva reserva = new Models.Reserva.Get(cliente, quarto, data_checkin, data_checkout, preco, hotel);
-            return Models.Reserva.Cadastrar(reserva);
+            Models.Funcionario funcionario = funcionarioCrud.Get(int.Parse(funcionarioId));
+
+            Models.Reserva reserva = new Models.Reserva(cliente.Id, quarto.Id, DateTime.Parse(data_checkin), DateTime.Parse(data_checkout), Decimal.Parse(preco), hotel.Id, funcionario.Id);
+            return reservaCrud.Cadastrar(reserva);
         }
 
-        public static List<Models.Reserva> GetAllReservas()
+        public static IEnumerable<Models.Reserva> GetAllReservas()
         {
-            List<Models.Reserva> reserva = Models.Reserva.GetAll();
+            IEnumerable<Models.Reserva> reserva = reservaCrud.GetAll();
 
             return reserva;
         }
@@ -33,7 +37,7 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Reserva reserva = Models.Reserva.Get(idInt);
+                    Models.Reserva reserva = reservaCrud.Get(idInt);
 
                     return reserva;
                 }
@@ -48,23 +52,24 @@ namespace ProjetoHotelSerranoSenac
             }
         }
 
-        public static Models.Reserva AlterarReserva(string reservaId, string clienteId, string quartoId, string data_checkin, string data_checkout, string preco, string hotelId)
+        public static Models.Reserva AlterarReserva(string reservaId, string clienteId, string quartoId, string data_checkin, string data_checkout, string preco, string hotelId, string funcionarioId)
         {
             try
             {
                 if (reservaId != null)
                 {
                     int idInt = int.Parse(reservaId);
-                    Models.Reserva reserva = Models.Reserva.Get(idInt);
+                    Models.Reserva reserva = reservaCrud.Get(idInt);
 
                     reserva.ClienteId = int.Parse(clienteId);
                     reserva.QuartoId = int.Parse(quartoId);
-                    reserva.DataCheckin = data_checkin;
-                    reserva.DataCheckout = data_checkout;
-                    reserva.Preco = preco;
+                    reserva.DataCheckin = DateTime.Parse(data_checkin);
+                    reserva.DataCheckout = DateTime.Parse(data_checkout);
+                    reserva.Preco = Decimal.Parse(preco);
+                    reserva.HotelId = int.Parse(hotelId);
                     reserva.FuncionarioId = int.Parse(funcionarioId);
 
-                    Models.Reserva.Alterar(reserva);
+                    reservaCrud.Alterar(reserva);
 
                     return reserva;
                 }
@@ -86,8 +91,8 @@ namespace ProjetoHotelSerranoSenac
                 if (id != null)
                 {
                     int idInt = int.Parse(id);
-                    Models.Reserva reserva = Models.Reserva.Get(idInt);
-                    Models.Reserva.Excluir(idInt);
+                    Models.Reserva reserva = reservaCrud.Get(idInt);
+                    reservaCrud.Excluir(idInt);
 
                     return reserva;
                 }
