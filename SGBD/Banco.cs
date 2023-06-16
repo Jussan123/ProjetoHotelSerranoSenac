@@ -9,6 +9,9 @@ namespace Banco
 {
     public class DataBase : DbContext
     {
+        public DataBase() { }
+        public DataBase(DbContextOptions<DataBase> options) : base(options) { }
+        
         public DbSet<Hotel> Hoteis { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
