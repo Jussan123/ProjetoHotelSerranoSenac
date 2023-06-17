@@ -1,6 +1,6 @@
 using System;
 
-namespace ProjetoHotelSerranoSenac
+namespace ProjetoHotelSerranoSenac.Controllers
 {
     public class Hotel
     {
@@ -22,21 +22,14 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Hotel hotel = hotelCrud.Get(idInt);
+                int idInt = int.Parse(id);
+                Models.Hotel hotel = hotelCrud.Get(idInt);
 
-                    return hotel;
-                }
-                {
-                    throw new Exception("Hotel não existe");
-                }
+                return hotel;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao buscar Hotel");
+                throw new Exception("Erro ao buscar Hotel: " + e.Message);
             }
         }
 
@@ -44,27 +37,20 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (hotelId != null)
-                {
-                    int idInt = int.Parse(hotelId);
-                    Models.Hotel hotel = hotelCrud.Get(idInt);
+                int idInt = int.Parse(hotelId);
+                Models.Hotel hotel = hotelCrud.Get(idInt);
 
-                    hotel.Nome = nome;
-                    hotel.Endereco = endereco;
-                    hotel.Telefone = telefone;
+                hotel.Nome = nome;
+                hotel.Endereco = endereco;
+                hotel.Telefone = telefone;
 
-                    hotelCrud.Alterar(hotel);
+                hotelCrud.Alterar(hotel);
 
-                    return hotel;
-                }
-                {
-                    throw new Exception("Hotel não existe");
-                }
+                return hotel;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao alterar Hotel");
+                throw new Exception("Erro ao alterar Hotel: " + e.Message);
             }
         }
 
@@ -72,23 +58,15 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Hotel hotel = hotelCrud.Get(idInt);
-                    hotelCrud.Excluir(hotel.Id);
+                int idInt = int.Parse(id);
+                Models.Hotel hotel = hotelCrud.Get(idInt);
+                hotelCrud.Excluir(hotel.Id);
 
-                    return hotel;
-                }
-                else
-                {
-                    throw new Exception("Hotel não encontrado");
-                }
+                return hotel;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao excluir Hotel!");
+                throw new Exception("Erro ao excluir Hotel: " + e.Message);
             }
         }
     }
