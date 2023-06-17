@@ -1,17 +1,17 @@
 using System;
 
-namespace ProjetoHotelSerranoSenac
+namespace ProjetoHotelSerranoSenac.Controllers
 {
     public class Cliente
     {
-        public static Models.Hotel hotelCrud = new Models.Hotel();
-        public static Models.Cliente clienteCrud = new Models.Cliente();
+        public static Models.Hotel hotelCrud = new();
+        public static Models.Cliente clienteCrud = new();
         public static Models.Cliente CadastrarCliente(string nome, string email, string telefone, string hotelId)
         {
             int intHotelId = int.Parse(hotelId);
             Models.Hotel hotel = hotelCrud.Get(intHotelId);
 
-            Models.Cliente cliente = new Models.Cliente(nome, email, telefone, hotel.Id);
+            Models.Cliente cliente = new(nome, email, telefone, hotel.Id);
 
             return clienteCrud.Cadastrar(cliente);
         }
@@ -20,21 +20,13 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Cliente cliente = clienteCrud.Get(idInt);
+                Models.Cliente cliente = clienteCrud.Get(int.Parse(id));
 
-                    return cliente;
-                }
-                {
-                    throw new Exception("Cliente não existe");
-                }
+                return cliente;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao buscar Cliente");
+                throw new Exception("Erro ao buscar Cliente: " + e.Message);
             }
         }
 
@@ -50,28 +42,21 @@ namespace ProjetoHotelSerranoSenac
 
             try
             {
-                if (clienteId != null)
-                {
-                    int idInt = int.Parse(clienteId);
-                    Models.Cliente cliente = clienteCrud.Get(idInt);
+                int idInt = int.Parse(clienteId);
+                Models.Cliente cliente = clienteCrud.Get(idInt);
 
-                    cliente.Nome = nome;
-                    cliente.Email = email;
-                    cliente.Telefone = telefone;
-                    cliente.HotelId = int.Parse(hotelId);
+                cliente.Nome = nome;
+                cliente.Email = email;
+                cliente.Telefone = telefone;
+                cliente.HotelId = int.Parse(hotelId);
 
-                    clienteCrud.Alterar(cliente);
+                clienteCrud.Alterar(cliente);
 
-                    return cliente;
-                }
-                {
-                    throw new Exception("Cliente não existe");
-                }
+                return cliente;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao alterar Cliente");
+                throw new Exception("Erro ao alterar Cliente: " + e.Message);
             }
         }
 
@@ -79,23 +64,15 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Cliente cliente = clienteCrud.Get(idInt);
-                    clienteCrud.Excluir(cliente.Id);
+                int idInt = int.Parse(id);
+                Models.Cliente cliente = clienteCrud.Get(idInt);
+                clienteCrud.Excluir(cliente.Id);
 
-                    return cliente;
-                }
-                else
-                {
-                    throw new Exception("Cliente não encontrado");
-                }
+                return cliente;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao excluir Cliente!");
+                throw new Exception("Erro ao excluir Cliente: " + e.Message);
             }
         }
 

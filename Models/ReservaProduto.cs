@@ -9,13 +9,15 @@ namespace ProjetoHotelSerranoSenac.Models
         public Reserva Reserva { get; set; }
         public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
+        public int Quantidade { get; set; }
 
         public ReservaProduto() { }
 
-        public ReservaProduto(int reservaId, int produtoId)
+        public ReservaProduto(int reservaId, int produtoId, int quantidade)
         {
             ReservaId = reservaId;
             ProdutoId = produtoId;
+            Quantidade = quantidade;
         }
     }
 }

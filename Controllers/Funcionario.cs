@@ -1,14 +1,14 @@
 using System;
 
-namespace ProjetoHotelSerranoSenac
+namespace ProjetoHotelSerranoSenac.Controllers
 {
     public class Funcionario
     {
-        public static Models.Funcionario funcionarioCrud = new Models.Funcionario();
+        public static Models.Funcionario funcionarioCrud = new();
 
-        public static Models.Funcionario CadastrarFuncionario(string nome, string email, string telefone, string role, string salario)
+        public static Models.Funcionario CadastrarFuncionario(string nome, string email, string senha, string telefone, string role, string salario)
         {
-            Models.Funcionario funcionario = new Models.Funcionario(nome, email, telefone, role, Double.Parse(salario));
+            Models.Funcionario funcionario = new(nome, email, Controllers.Login.GenerateHashCode(senha.GetHashCode()).ToString(), telefone, role, Double.Parse(salario));
             return funcionarioCrud.Cadastrar(funcionario);
         }
 
@@ -23,51 +23,43 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
+                int idInt = int.Parse(id);
+                Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
 
-                    return funcionario;
-                }
-                {
-                    throw new Exception("Funcionario não existe");
-                }
+                return funcionario;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao buscar Funcionario");
+                throw new Exception("Erro ao buscar Funcionario: " + e.Message);
             }
+        }
+
+        public static Models.Funcionario GetFuncionarioByEmail(string email)
+        {
+            Models.Funcionario funcionario = funcionarioCrud.GetAll().FirstOrDefault(x => x.Email == email) ?? throw new Exception("Funcionario não encontrado");
+            return funcionario;
         }
 
         public static Models.Funcionario AlterarFuncionario(string funcionarioId, string nome, string email, string telefone, string role, string salario)
         {
             try
             {
-                if (funcionarioId != null)
-                {
-                    int idInt = int.Parse(funcionarioId);
-                    Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
+                int idInt = int.Parse(funcionarioId);
+                Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
 
-                    funcionario.Nome = nome;
-                    funcionario.Email = email;
-                    funcionario.Telefone = telefone;
-                    funcionario.Salario = Double.Parse(salario);
-                    funcionario.Role = role;
+                funcionario.Nome = nome;
+                funcionario.Email = email;
+                funcionario.Telefone = telefone;
+                funcionario.Salario = Double.Parse(salario);
+                funcionario.Role = (Models.Generic.Roles)Enum.Parse(typeof(Models.Generic.Roles), role);
 
-                    funcionarioCrud.Alterar(funcionario);
+                funcionarioCrud.Alterar(funcionario);
 
-                    return funcionario;
-                }
-                {
-                    throw new Exception("Funcionario não existe");
-                }
+                return funcionario;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao alterar Funcionario");
+                throw new Exception("Erro ao alterar Funcionario: " + e.Message);
             }
         }
 
@@ -75,23 +67,15 @@ namespace ProjetoHotelSerranoSenac
         {
             try
             {
-                if (id != null)
-                {
-                    int idInt = int.Parse(id);
-                    Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
-                    funcionarioCrud.Excluir(idInt);
+                int idInt = int.Parse(id);
+                Models.Funcionario funcionario = funcionarioCrud.Get(idInt);
+                funcionarioCrud.Excluir(idInt);
 
-                    return funcionario;
-                }
-                else
-                {
-                    throw new Exception("Funcionario não encontrado");
-                }
+                return funcionario;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-
-                throw new Exception("Erro ao excluir Funcionario!");
+                throw new Exception("Erro ao excluir Funcionario: " + e.Message);
             }
         }
     }
