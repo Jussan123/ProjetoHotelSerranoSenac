@@ -54,19 +54,19 @@ namespace View
         private void SetupLayout()
         {
             adicionarProdutoButton.Text = "Novo";
-            adicionarProdutoButton.Location = new Point(10, 10);
+            adicionarProdutoButton.Location = new Point(270, 10);
             adicionarProdutoButton.Click += new EventHandler(adicionarProdutoButton_Click);
 
             atualizarProdutoButton.Text = "Editar";
-            atualizarProdutoButton.Location = new Point(100, 10);
+            atualizarProdutoButton.Location = new Point(350, 10);
             atualizarProdutoButton.Click += new EventHandler(atualizarProdutoButton_Click);
 
             deletarProdutoButton.Text = "Excluir";
-            deletarProdutoButton.Location = new Point(200, 10);
+            deletarProdutoButton.Location = new Point(430, 10);
             deletarProdutoButton.Click += new EventHandler(deletarProdutoButton_Click);
 
             voltarButton.Text = "Voltar";
-            voltarButton.Location = new Point(400, 10);
+            voltarButton.Location = new Point(510, 10);
             voltarButton.Click += new EventHandler(voltarButton_Click);
 
             buttonPanel.Controls.Add(adicionarProdutoButton);
@@ -76,6 +76,7 @@ namespace View
             buttonPanel.Height = 50;
             buttonPanel.Dock = DockStyle.Bottom;
 
+            this.BackColor = Color.AliceBlue;
             this.Size = new Size(600, 400);
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
@@ -95,11 +96,9 @@ namespace View
 
             produtoGridView.Name = "produtoGridView";
             produtoGridView.Location = new Point(8, 8);
-            produtoGridView.Size = new Size(500, 250);
-            produtoGridView.AutoSizeRowsMode =
-                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            produtoGridView.ColumnHeadersBorderStyle =
-                DataGridViewHeaderBorderStyle.Single;
+            produtoGridView.Size = new Size(600, 400);
+            produtoGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            produtoGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             produtoGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             produtoGridView.GridColor = Color.Black;
             produtoGridView.RowHeadersVisible = false;
@@ -110,14 +109,11 @@ namespace View
             produtoGridView.Columns[2].DefaultCellStyle.Font =
                 new Font(produtoGridView.DefaultCellStyle.Font, FontStyle.Italic);
 
-            produtoGridView.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            produtoGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             produtoGridView.MultiSelect = false;
             produtoGridView.Dock = DockStyle.Fill;
 
-            produtoGridView.CellFormatting += new
-                DataGridViewCellFormattingEventHandler(
-                produtoGridView_CellFormatting);
+            produtoGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(produtoGridView_CellFormatting);
         }
 
         private void PopulateDataGridView()
@@ -140,6 +136,9 @@ namespace View
 
         private void atualizarProdutoButton_Click(object sender, EventArgs e)
         {
+            //aqui na atualização/edição vai pegar o id da linha selecionada e passar por parâmetro o idSelecionado
+            // Produto telaProduto = new Produto(idSelecionado);
+            // telaProduto.ShowDialog();
             this.produtoGridView.Rows.Add();
         }
 

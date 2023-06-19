@@ -1,13 +1,12 @@
+using ProjetoHotelSerranoSenac;
 
-using View;
-
-namespace ProjetoHotelSerranoSenac
+namespace View
 {
 
     public class TelaPrincipal : Form
     {
-
         Label lblMenu;
+        PictureBox pictureBox;
         Button btnProdutoExemplo;
 
         Button btnReservas;
@@ -25,8 +24,14 @@ namespace ProjetoHotelSerranoSenac
             this.Text = "Hotel Serrano";
 
             lblMenu = new Label();
-            lblMenu.Text = "MENU";
-            lblMenu.Location = new Point(30, 30);
+            lblMenu.Text = "AQUI VAI A LOGO";
+            lblMenu.Location = new Point(20, 20);
+            lblMenu.Size = new Size(120, 30);
+            
+            pictureBox = new PictureBox();
+            pictureBox.Location = new Point(300, 100);
+            pictureBox.Size = new Size(400, 300);
+            pictureBox.Image = Image.FromFile(@"Logo\Captura de tela de 2021-07-01 20-02-55.png");
 
             btnProdutoExemplo = new Button();
             btnProdutoExemplo.Text = "Btn Exemplo";
@@ -79,8 +84,10 @@ namespace ProjetoHotelSerranoSenac
             contentPanel = new Panel();
             contentPanel.Size = new Size(600, 400);
             contentPanel.Location = new Point(160, 60);
+            contentPanel.BorderStyle = BorderStyle.Fixed3D;
 
             this.Controls.Add(lblMenu);
+            this.Controls.Add(pictureBox);
             this.Controls.Add(btnProdutoExemplo);
             this.Controls.Add(btnReservas);
             this.Controls.Add(btnFuncionarios);
@@ -91,10 +98,12 @@ namespace ProjetoHotelSerranoSenac
             this.Controls.Add(btnSair);
             this.Controls.Add(contentPanel);
             this.Size = new Size(800, 600);
+            this.BackColor = Color.WhiteSmoke;
         }
 
         private void btnProdutoExemploClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
             ListaProduto listaProdutoForm = new ListaProduto();
@@ -106,6 +115,7 @@ namespace ProjetoHotelSerranoSenac
 
         private void btnReservasClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
             // ListaReservas listaReservasForm = new ListaReservas();
@@ -117,6 +127,7 @@ namespace ProjetoHotelSerranoSenac
 
         private void btnFuncionariosClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
             // ListaFuncionarios listaFuncionariosForm = new ListaFuncionarios();
@@ -128,6 +139,7 @@ namespace ProjetoHotelSerranoSenac
 
         private void btnClienteClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
             // ListaCliente listaClienteForm = new ListaCliente();
@@ -139,6 +151,7 @@ namespace ProjetoHotelSerranoSenac
 
         private void btnQuartoClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
             // ListaQuarto listaQuartoForm = new ListaQuarto();
@@ -150,6 +163,7 @@ namespace ProjetoHotelSerranoSenac
 
         private void btnProdutoClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
             // ListaProduto listaProdutoForm = new ListaProduto();
@@ -161,13 +175,14 @@ namespace ProjetoHotelSerranoSenac
 
         private void btnRelatoriosClick(object sender, EventArgs e)
         {
+            this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaRelatorios listaRelatoriosForm = new ListaRelatorios();
-            // listaRelatoriosForm.TopLevel = false;
-            // listaRelatoriosForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaRelatoriosForm);
-            // listaRelatoriosForm.Show();
+            TelaRelatorios telaRelatoriosForm = new TelaRelatorios();
+            telaRelatoriosForm.TopLevel = false;
+            telaRelatoriosForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(telaRelatoriosForm);
+            telaRelatoriosForm.Show();
         }
 
         private void btnSairClick(object sender, EventArgs e)
