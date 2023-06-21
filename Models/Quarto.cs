@@ -26,5 +26,15 @@ namespace ProjetoHotelSerranoSenac.Models
             Disponivel = disponivel;
             HotelId = hotelId;
         }
+
+        public  string booleanToString(){
+            string disponivel = "Não";
+             if(Disponivel.ToString() == "True"){
+                disponivel = "Sim";
+            }else{
+                disponivel = "Não";
+            }
+            return disponivel;
+        }
     }
 }

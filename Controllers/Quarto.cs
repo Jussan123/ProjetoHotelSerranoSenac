@@ -46,7 +46,7 @@ namespace ProjetoHotelSerranoSenac.Controllers
                 quarto.NumeroQuarto = int.Parse(numero_quarto);
                 quarto.Descricao = descricao;
                 quarto.Valor = Double.Parse(valor);
-                quarto.Disponivel = disponivel != null && disponivel != "" ? true : false;
+                quarto.Disponivel = disponivel != null && disponivel != "" &&  disponivel == "Sim" ? true : false;
                 quarto.HotelId = int.Parse(hotelId);
 
                 quartoCrud.Alterar(quarto);
