@@ -130,11 +130,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaFuncionarios listaFuncionariosForm = new ListaFuncionarios();
-            // listaFuncionariosForm.TopLevel = false;
-            // listaFuncionariosForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaFuncionariosForm);
-            // listaFuncionariosForm.Show();
+            ListaFuncionario listaFuncionariosForm = new ListaFuncionario();
+            listaFuncionariosForm.TopLevel = false;
+            listaFuncionariosForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaFuncionariosForm);
+            listaFuncionariosForm.Show();
         }
 
         private void btnClienteClick(object sender, EventArgs e)
