@@ -31,7 +31,7 @@ namespace View
 
         ProgressBar pbTest;
 
-         List<ProjetoHotelSerranoSenac.Models.Cliente> listCliente = new List<ProjetoHotelSerranoSenac.Models.Cliente>();
+        List<ProjetoHotelSerranoSenac.Models.Cliente> listCliente = new List<ProjetoHotelSerranoSenac.Models.Cliente>();
         List<ProjetoHotelSerranoSenac.Models.Quarto> listQuarto = new List<ProjetoHotelSerranoSenac.Models.Quarto>();
         List<ProjetoHotelSerranoSenac.Models.Hotel> listHotel = new List<ProjetoHotelSerranoSenac.Models.Hotel>();
 
@@ -68,10 +68,10 @@ namespace View
             lblComboboxQuarto.AutoSize = true;
             lblComboboxQuarto.Location = new Point(20, 180);
 
-           comboboxQuarto = new ComboBox();
-           comboboxQuarto.Location = new Point(80, 180);
-           comboboxQuarto.Size = new Size(200, 18);
-           this.adicionarQuartosCombobox();
+            comboboxQuarto = new ComboBox();
+            comboboxQuarto.Location = new Point(80, 180);
+            comboboxQuarto.Size = new Size(200, 18);
+            this.adicionarQuartosCombobox();
 
 
             lblComboboxHotel = new Label();
@@ -79,10 +79,10 @@ namespace View
             lblComboboxHotel.AutoSize = true;
             lblComboboxHotel.Location = new Point(20, 240);
 
-           comboboxHotel = new ComboBox();
-           comboboxHotel.Location = new Point(80, 240);
-           comboboxHotel.Size = new Size(200, 18);
-           this.adicionarHoteisCombobox();
+            comboboxHotel = new ComboBox();
+            comboboxHotel.Location = new Point(80, 240);
+            comboboxHotel.Size = new Size(200, 18);
+            this.adicionarHoteisCombobox();
 
             lblDataCheckIn = new Label();
             lblDataCheckIn.Text = "Data Check-In:";
@@ -105,7 +105,7 @@ namespace View
             txtDataCheckOut.TextAlign = HorizontalAlignment.Center;
             txtDataCheckOut.Location = new Point(125, 360);
             txtDataCheckOut.Size = new Size(150, 18);
-           
+
 
             lblPreco = new Label();
             lblPreco.Text = "Valor:";
@@ -159,7 +159,7 @@ namespace View
             }
         }
 
-       
+
 
         private void voltarButton_Click(object sender, EventArgs e)
         {
@@ -199,25 +199,24 @@ namespace View
             return hotelSelecionado;
         }
 
-         private void confirmarClienteButton_Click(object sender, EventArgs e)
+        private void confirmarClienteButton_Click(object sender, EventArgs e)
         {
             try
             {
 
                 ProjetoHotelSerranoSenac.Models.Cliente clienteSelecionado = this.buscarClienteSelecionadoCombobox();
                 ProjetoHotelSerranoSenac.Models.Quarto quartoSelecionado = this.buscarQuartoSelecionadoCombobox();
-                ProjetoHotelSerranoSenac.Models.Hotel hotelSelecionado = this.buscarHotelSelecionadoCombobox();                                
+                ProjetoHotelSerranoSenac.Models.Hotel hotelSelecionado = this.buscarHotelSelecionadoCombobox();
 
 
                 if (this.txtId.Text != null && Int32.TryParse(this.txtId.Text, out int idCliente))
                 {
-                   // ProjetoHotelSerranoSenac.Controllers.Reserva.AlterarReserva(this.txtId.Text, hotelSelecionado.Id.ToString());
+                    // ProjetoHotelSerranoSenac.Controllers.Reserva.AlterarReserva(this.txtId.Text, hotelSelecionado.Id.ToString());
                     MessageBox.Show("Reserva atualizada com sucesso!");
                 }
                 else
-                {   
-                   
-                    ProjetoHotelSerranoSenac.Controllers.Reserva.CadastrarReserva(clienteSelecionado.Id.ToString(), quartoSelecionado.Id.ToString(), hotelSelecionado.Id.ToString(), txtDataCheckIn.ToString(),txtDataCheckOut.ToString(), txtPreco.Text);
+                {
+                    ProjetoHotelSerranoSenac.Controllers.Reserva.CadastrarReserva(clienteSelecionado.Id.ToString(), quartoSelecionado.Id.ToString(), txtDataCheckIn.Text, txtDataCheckOut.Text, hotelSelecionado.Id.ToString(), txtPreco.Text);
                     MessageBox.Show("Reserva cadastrada com sucesso!");
                 }
 
@@ -228,7 +227,7 @@ namespace View
                 MessageBox.Show(ex.Message);
 
             }
-        }        
+        }
 
         private void adicionarClientesCombobox()
         {
@@ -247,7 +246,7 @@ namespace View
                 comboboxCliente.SelectedIndex = 0;
             }
         }
-        
+
         private ProjetoHotelSerranoSenac.Models.Cliente buscarClienteSelecionadoCombobox()
         {
             ProjetoHotelSerranoSenac.Models.Cliente clienteSelecionado = new ProjetoHotelSerranoSenac.Models.Cliente();
@@ -274,7 +273,7 @@ namespace View
             }
 
             return quartoSelecionado;
-        }                
+        }
 
         private void adicionarQuartosCombobox()
         {
@@ -298,9 +297,9 @@ namespace View
         {
             ProjetoHotelSerranoSenac.Models.Cliente cliente = ProjetoHotelSerranoSenac.Controllers.Cliente.GetCliente(buscarClienteSelecionadoCombobox().ToString());
             ProjetoHotelSerranoSenac.Models.Reserva reserva = ProjetoHotelSerranoSenac.Controllers.Reserva.GetReserva(reservaId.ToString());
-			ProjetoHotelSerranoSenac.Models.Hotel hotel = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(cliente.HotelId.ToString());
+            ProjetoHotelSerranoSenac.Models.Hotel hotel = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(cliente.HotelId.ToString());
             ProjetoHotelSerranoSenac.Models.Quarto quarto = ProjetoHotelSerranoSenac.Controllers.Quarto.GetQuarto(buscarQuartoSelecionadoCombobox().ToString());
-            
+
             this.txtId.Text = reservaId.ToString();
             this.txtDataCheckIn.Text = reserva.DataCheckin.ToString();
             this.txtDataCheckIn.Text = reserva.DataCheckout.ToString();
