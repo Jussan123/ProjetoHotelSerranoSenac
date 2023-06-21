@@ -14,6 +14,12 @@ namespace View
         Button btnRelatorioFuncionarios;
         public TelaRelatorios()
         {
+            this.setupRelatorio();
+           
+        }
+
+        private void setupRelatorio()
+        {
             this.Text = "Hotel Serrano";
 
             btnRelatorioDespesas = new Button();
@@ -76,7 +82,10 @@ namespace View
 
         private void btnRelatorioProdutosClick(object sender, EventArgs e)
         {
-            //Aqui vai chamar a classe para gerar o relatório de Produtos
+            
+            RelatorioProduto listaProdutoForm = new RelatorioProduto();
+            listaProdutoForm.ShowDialog();     
+
         }
 
         private void btnRelatorioHospedesClick(object sender, EventArgs e)
