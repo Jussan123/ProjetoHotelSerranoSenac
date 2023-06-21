@@ -154,11 +154,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaQuarto listaQuartoForm = new ListaQuarto();
-            // listaQuartoForm.TopLevel = false;
-            // listaQuartoForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaQuartoForm);
-            // listaQuartoForm.Show();
+            ListaQuarto listaQuartoForm = new ListaQuarto();
+            listaQuartoForm.TopLevel = false;
+            listaQuartoForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaQuartoForm);
+            listaQuartoForm.Show();
         }
 
         private void btnProdutoClick(object sender, EventArgs e)
@@ -166,11 +166,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaProduto listaProdutoForm = new ListaProduto();
-            // listaProdutoForm.TopLevel = false;
-            // listaProdutoForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaProdutoForm);
-            // listaProdutoForm.Show();
+            ListaProduto listaProdutoForm = new ListaProduto();
+            listaProdutoForm.TopLevel = false;
+            listaProdutoForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaProdutoForm);
+            listaProdutoForm.Show();
         }
 
         private void btnRelatoriosClick(object sender, EventArgs e)

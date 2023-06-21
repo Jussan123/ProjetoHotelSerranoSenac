@@ -2,8 +2,9 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ProjetoHotelSerranoSenac;
+using View;
 
-namespace View
+namespace View 
 {
     public class ListaProduto : Form
     {
@@ -87,7 +88,7 @@ namespace View
         {
             this.Controls.Add(produtoGridView);
 
-            produtoGridView.ColumnCount = 3;
+            produtoGridView.ColumnCount = 6;
 
             produtoGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             produtoGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -106,9 +107,10 @@ namespace View
             produtoGridView.Columns[0].Name = "Id";
             produtoGridView.Columns[1].Name = "Nome";
             produtoGridView.Columns[2].Name = "Preço";
-            produtoGridView.Columns[2].DefaultCellStyle.Font =
-                new Font(produtoGridView.DefaultCellStyle.Font, FontStyle.Italic);
-
+            produtoGridView.Columns[3].Name = "Preço de Compra";
+            produtoGridView.Columns[4].Name = "Quantidade";
+            produtoGridView.Columns[5].Name = "Hotel";
+           
             produtoGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             produtoGridView.MultiSelect = false;
             produtoGridView.Dock = DockStyle.Fill;
@@ -119,27 +121,45 @@ namespace View
         private void PopulateDataGridView()
         {
 
-            string[] row0 = { "1", "Carro", "10" };
-            string[] row1 = { "2", "Bicicleta", "20" };
-            string[] row2 = { "3", "Moto", "30" };
 
-            produtoGridView.Rows.Add(row0);
-            produtoGridView.Rows.Add(row1);
-            produtoGridView.Rows.Add(row2);
+            produtoGridView.Rows.Clear();
+
+            IEnumerable<ProjetoHotelSerranoSenac.Models.Produto> collectionClientes = ProjetoHotelSerranoSenac.Controllers.Produto.GetAllProdutos();
+
+            if (collectionClientes != null && collectionClientes.Count() > 0)
+            {
+                foreach (var item in collectionClientes)
+                {
+                    ProjetoHotelSerranoSenac.Models.Hotel hotelCliente = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(item.HotelId.ToString());
+                    string[] linhaCliente = { item.Id.ToString(), item.Nome, item.Preco.ToString(), item.PrecoCompra.ToString(), item.Quantidade.ToString(), hotelCliente.Nome };
+
+                    produtoGridView.Rows.Add(linhaCliente);
+                }
+            }
         }
 
         private void adicionarProdutoButton_Click(object sender, EventArgs e)
         {
-            Produto telaProduto = new Produto();
+            Produto telaProduto = new Produto(null);
+            telaProduto.FormClosed += new FormClosedEventHandler(recarregarDadosGrid);
             telaProduto.ShowDialog();
         }
 
         private void atualizarProdutoButton_Click(object sender, EventArgs e)
         {
-            //aqui na atualização/edição vai pegar o id da linha selecionada e passar por parâmetro o idSelecionado
-            // Produto telaProduto = new Produto(idSelecionado);
-            // telaProduto.ShowDialog();
-            this.produtoGridView.Rows.Add();
+            if (this.produtoGridView.SelectedRows.Count > 0 &&
+                this.produtoGridView.SelectedRows[0].Index !=
+                this.produtoGridView.Rows.Count - 1)
+            {
+                string idProdutoSelecionado = produtoGridView.Rows[this.produtoGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+                Produto telaCliente = new Produto(Int32.Parse(idProdutoSelecionado));
+                telaCliente.FormClosed += new FormClosedEventHandler(recarregarDadosGrid);
+                telaCliente.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum cliente foi selecionado!");
+            }
         }
 
         private void deletarProdutoButton_Click(object sender, EventArgs e)
@@ -162,7 +182,11 @@ namespace View
 
             }
         }
-
+        private void recarregarDadosGrid(object sender, FormClosedEventArgs e)
+        {
+            PopulateDataGridView();
+            this.produtoGridView.Refresh();
+        }
         private void voltarButton_Click(object sender, EventArgs e)
         {
             this.Close();
