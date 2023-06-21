@@ -1,4 +1,6 @@
 using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ProjetoHotelSerranoSenac.Controllers
 {
@@ -8,8 +10,18 @@ namespace ProjetoHotelSerranoSenac.Controllers
 
         public static Models.Funcionario CadastrarFuncionario(string nome, string email, string senha, string telefone, string role, string salario)
         {
-            Models.Funcionario funcionario = new(nome, email, Controllers.Login.GenerateHashCode(senha.GetHashCode()).ToString(), telefone, role, Double.Parse(salario));
+            Models.Funcionario funcionario = new(nome, email, Controllers.Login.GenerateHashCode(StringToInt(senha)).ToString(), telefone, role, Double.Parse(salario));
             return funcionarioCrud.Cadastrar(funcionario);
+        }
+
+        public static int StringToInt(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                int result = BitConverter.ToInt32(hashBytes, 0);
+                return result;
+            }
         }
 
         public static IEnumerable<Models.Funcionario> GetAllFuncionarios()
