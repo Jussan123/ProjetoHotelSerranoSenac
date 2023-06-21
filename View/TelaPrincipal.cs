@@ -25,7 +25,7 @@ namespace ProjetoHotelSerranoSenac
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
             lblMenu = new Label();
-            lblMenu.Text = "AQUI VAI A LOGO";
+            //lblMenu.Text = "AQUI VAI A LOGO";
             lblMenu.Location = new Point(20, 20);
             lblMenu.Size = new Size(120, 30);
             
