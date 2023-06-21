@@ -19,6 +19,7 @@ namespace View
         {
             this.Text = "Listagem de Produto";
             this.Load += new EventHandler(ListaProduto_Load);
+            this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void ListaProduto_Load(System.Object sender, System.EventArgs e)
@@ -54,22 +55,34 @@ namespace View
 
         private void SetupLayout()
         {
+            
+            this.Size = new Size(600, 400);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#3E5E50");
+
             adicionarProdutoButton.Text = "Novo";
             adicionarProdutoButton.Location = new Point(270, 10);
+            adicionarProdutoButton.BackColor = Color.Snow;
             adicionarProdutoButton.Click += new EventHandler(adicionarProdutoButton_Click);
+            adicionarProdutoButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             atualizarProdutoButton.Text = "Editar";
             atualizarProdutoButton.Location = new Point(350, 10);
+            atualizarProdutoButton.BackColor = Color.Snow;
             atualizarProdutoButton.Click += new EventHandler(atualizarProdutoButton_Click);
+            atualizarProdutoButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             deletarProdutoButton.Text = "Excluir";
             deletarProdutoButton.Location = new Point(430, 10);
+            deletarProdutoButton.BackColor = Color.Snow;
             deletarProdutoButton.Click += new EventHandler(deletarProdutoButton_Click);
+            deletarProdutoButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             voltarButton.Text = "Voltar";
             voltarButton.Location = new Point(510, 10);
+            voltarButton.BackColor = Color.Snow;
             voltarButton.Click += new EventHandler(voltarButton_Click);
-
+            voltarButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            
             buttonPanel.Controls.Add(adicionarProdutoButton);
             buttonPanel.Controls.Add(atualizarProdutoButton);
             buttonPanel.Controls.Add(deletarProdutoButton);
@@ -77,8 +90,7 @@ namespace View
             buttonPanel.Height = 50;
             buttonPanel.Dock = DockStyle.Bottom;
 
-            this.BackColor = Color.AliceBlue;
-            this.Size = new Size(600, 400);
+            
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Controls.Add(this.buttonPanel);
@@ -90,10 +102,10 @@ namespace View
 
             produtoGridView.ColumnCount = 6;
 
-            produtoGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
-            produtoGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            produtoGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Green;
+            produtoGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.LightGreen;
             produtoGridView.ColumnHeadersDefaultCellStyle.Font =
-                new Font(produtoGridView.Font, FontStyle.Bold);
+                new Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             produtoGridView.Name = "produtoGridView";
             produtoGridView.Location = new Point(8, 8);
@@ -102,6 +114,7 @@ namespace View
             produtoGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             produtoGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             produtoGridView.GridColor = Color.Black;
+            produtoGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml(" #C0CCDA");
             produtoGridView.RowHeadersVisible = false;
 
             produtoGridView.Columns[0].Name = "Id";
@@ -110,6 +123,7 @@ namespace View
             produtoGridView.Columns[3].Name = "Preço de Compra";
             produtoGridView.Columns[4].Name = "Quantidade";
             produtoGridView.Columns[5].Name = "Hotel";
+                new Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
            
             produtoGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             produtoGridView.MultiSelect = false;
