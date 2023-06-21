@@ -90,5 +90,20 @@ namespace ProjetoHotelSerranoSenac.Controllers
                 throw new Exception("Erro ao excluir Funcionario: " + e.Message);
             }
         }
+
+        public static double CalcularValorSalarioFuncionarios(int quantidadeDias)
+        {
+            IEnumerable<Models.Funcionario> funcionarios = funcionarioCrud.GetAll();
+            double totalSalario = 0;
+
+            foreach (Models.Funcionario funcionario in funcionarios)
+            {
+                double salarioFuncionario = funcionario.Salario * (quantidadeDias / 30.0);
+                totalSalario += salarioFuncionario;
+            }
+
+            return totalSalario;
+        }
+
     }
 }
