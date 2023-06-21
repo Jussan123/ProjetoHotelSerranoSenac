@@ -1,20 +1,21 @@
 using System;
 
-namespace ProjetoHotelSerranoSenac.Controllers
+namespace ProjetoHotelSerranoSenac
 {
     public class Produto
     {
-        public static Models.Produto produtoCrud = new();
-
-        public static Models.Produto CadastrarProduto(string nome, string preco, string quantidade,  string precoCompra, string hotelId)
+        public static Models.Produto CadastrarProduto(string nome, string preco, string quantidade, string hotelId)
         {
-            Models.Produto produto = new(nome, Double.Parse(preco),  Double.Parse(quantidade),  Double.Parse(precoCompra), int.Parse(hotelId));
-            return produtoCrud.Cadastrar(produto);
+            int intHotelId = intParse(hotelId);
+            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
+
+            Models.Produto produto = new Models.Despesa.Get(nome, preco, quantidade, hotel);
+            return Models.Produto.Cadastrar(produto);
         }
 
-        public static IEnumerable<Models.Produto> GetAllProdutos()
+        public static List<Models.Produto> GetAllProdutos()
         {
-            IEnumerable<Models.Produto> produto = produtoCrud.GetAll();
+            List<Models.Produto> produto = Models.Produto.GetAll();
 
             return produto;
         }
@@ -23,37 +24,51 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                Models.Produto produto = produtoCrud.Get(int.Parse(id));
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Produto produto = Models.Produto.Get(idInt);
 
-                return produto;
-
+                    return produto;
+                }
+                {
+                    throw new Exception("Produto não existe");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw new Exception("Erro ao buscar Produto: " + e.Message);
+
+                throw new Exception("Erro ao buscar Produto");
             }
         }
 
-        public static Models.Produto AlterarProduto(string produtoId, string nome, string preco, string quantidade,  string precoCompra, string hotelId)
+        public static Models.Produto AlterarProduto(string produtoId, string nome, string preco, string quantidade, string hotelId)
         {
             try
             {
-                int idInt = int.Parse(produtoId);
-                Models.Produto produto = produtoCrud.Get(idInt);
+                if (produtoId != null)
+                {
+                    int idInt = int.Parse(produtoId);
+                    Models.Produto produto = Models.Produto.Get(idInt);
 
-                produto.Nome = nome;
-                produto.Preco = Double.Parse(preco);
-                produto.Quantidade = Double.Parse(quantidade);
-                produto.PrecoCompra = Double.Parse(precoCompra);
-                produto.HotelId = int.Parse(hotelId);
+                    produto.Nome = nome;
+                    produto.Preco = preco;
+                    produto.Preco = preco;
+                    produto.Quantidade = quantidade;
+                    produto.HotelId = int.Parse(hotelId);
 
-                produtoCrud.Alterar(produto);
+                    Models.Produto.Alterar(produto);
 
-                return produto;
+                    return produto;
+                }
+                {
+                    throw new Exception("Produto não existe");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw new Exception("Erro ao alterar Produto: " + e.Message);
+
+                throw new Exception("Erro ao alterar Produto");
             }
         }
 
@@ -61,15 +76,23 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                int idInt = int.Parse(id);
-                Models.Produto produto = produtoCrud.Get(idInt);
-                produtoCrud.Excluir(idInt);
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Produto produto = Models.Produto.Get(idInt);
+                    Models.Produto.Excluir(idInt);
 
-                return produto;
+                    return produto;
+                }
+                else
+                {
+                    throw new Exception("Produto não encontrado");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw new Exception("Erro ao excluir Produto: " + e.Message);
+
+                throw new Exception("Erro ao excluir Produto!");
             }
         }
     }

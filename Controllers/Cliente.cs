@@ -1,38 +1,44 @@
 using System;
 
-namespace ProjetoHotelSerranoSenac.Controllers
+namespace ProjetoHotelSerranoSenac
 {
     public class Cliente
     {
-        public static Models.Hotel hotelCrud = new();
-        public static Models.Cliente clienteCrud = new();
         public static Models.Cliente CadastrarCliente(string nome, string email, string telefone, string hotelId)
         {
             int intHotelId = int.Parse(hotelId);
-            Models.Hotel hotel = hotelCrud.Get(intHotelId);
+            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
 
-            Models.Cliente cliente = new(nome, email, telefone, hotel.Id);
+            Models.Cliente cliente = new Models.Cliente(nome, email, telefone, hotel);
 
-            return clienteCrud.Cadastrar(cliente);
+            return Models.Cliente.Cadastrar(cliente);
         }
 
         public static Models.Cliente GetCliente(string id)
         {
             try
             {
-                Models.Cliente cliente = clienteCrud.Get(int.Parse(id));
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Cliente cliente = Models.Cliente.Get(idInt);
 
-                return cliente;
+                    return cliente;
+                }
+                {
+                    throw new Exception("Cliente não existe");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw new Exception("Erro ao buscar Cliente: " + e.Message);
+
+                throw new Exception("Erro ao buscar Cliente");
             }
         }
 
-        public static IEnumerable<Models.Cliente> GetAllClientes()
+        public static List<Models.Cliente> GetAllClientes()
         {
-            IEnumerable<Models.Cliente> clientes = clienteCrud.GetAll();
+            List<Models.Cliente> clientes = Models.Cliente.GetAll();
 
             return clientes;
         }
@@ -42,21 +48,28 @@ namespace ProjetoHotelSerranoSenac.Controllers
 
             try
             {
-                int idInt = int.Parse(clienteId);
-                Models.Cliente cliente = clienteCrud.Get(idInt);
+                if (clienteId != null)
+                {
+                    int idInt = int.Parse(clienteId);
+                    Models.Cliente cliente = Models.Cliente.Get(idInt);
 
-                cliente.Nome = nome;
-                cliente.Email = email;
-                cliente.Telefone = telefone;
-                cliente.HotelId = int.Parse(hotelId);
+                    cliente.Nome = nome;
+                    cliente.Email = email;
+                    cliente.Telefone = telefone;
+                    cliente.HotelId = int.Parse(hotelId);
 
-                clienteCrud.Alterar(cliente);
+                    Models.Cliente.Alterar(cliente);
 
-                return cliente;
+                    return cliente;
+                }
+                {
+                    throw new Exception("Cliente não existe");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw new Exception("Erro ao alterar Cliente: " + e.Message);
+
+                throw new Exception("Erro ao alterar Cliente");
             }
         }
 
@@ -64,15 +77,23 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                int idInt = int.Parse(id);
-                Models.Cliente cliente = clienteCrud.Get(idInt);
-                clienteCrud.Excluir(cliente.Id);
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Cliente cliente = Models.Cliente.Get(idInt);
+                    Models.Cliente.Excluir(idInt);
 
-                return cliente;
+                    return cliente;
+                }
+                else
+                {
+                    throw new Exception("Cliente não encontrado");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                throw new Exception("Erro ao excluir Cliente: " + e.Message);
+
+                throw new Exception("Erro ao excluir Cliente!");
             }
         }
 

@@ -1,22 +1,21 @@
 using System;
 
-namespace ProjetoHotelSerranoSenac.Controllers
+namespace ProjetoHotelSerranoSenac
 {
     public class Quarto
     {
-        public static Models.Hotel hotelCrud = new();
-        public static Models.Quarto quartoCrud = new();
         public static Models.Quarto CadastrarQuarto(string numero_quarto, string descricao, string valor, string disponivel, string hotelId)
         {
-            Models.Hotel hotel = hotelCrud.Get(int.Parse(hotelId));
+            int intHotelId = intParse(hotelId);
+            Models.Hotel hotel = Models.Hotel.Get(intHotelId);
 
-            Models.Quarto quarto = new(int.Parse(numero_quarto), descricao, Double.Parse(valor), disponivel != null && disponivel != "" ? true : false, hotel.Id);
-            return quartoCrud.Cadastrar(quarto);
+            Models.Quarto quarto = new Models.Quarto.Get(numero_quarto, descricao, valor, disponivel, hotel);
+            return Models.Quarto.Cadastrar(quarto);
         }
 
-        public static IEnumerable<Models.Quarto> GetAllQuartos()
+        public static List<Models.Quarto> GetAllQuartos()
         {
-            IEnumerable<Models.Quarto> quarto = quartoCrud.GetAll();
+            List<Models.Quarto> quarto = Models.Quarto.GetAll();
 
             return quarto;
         }
@@ -25,14 +24,21 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                Models.Quarto quarto = quartoCrud.Get(int.Parse(id));
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Quarto quarto = Models.Quarto.Get(idInt);
 
-                return quarto;
+                    return quarto;
+                }
+                {
+                    throw new Exception("Quarto não existe");
+                }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
 
-                throw new Exception("Erro ao buscar Quarto: " + e.Message);
+                throw new Exception("Erro ao buscar Quarto");
             }
         }
 
@@ -40,21 +46,28 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                int idInt = int.Parse(quartoId);
-                Models.Quarto quarto = quartoCrud.Get(idInt);
+                if (quartoId != null)
+                {
+                    int idInt = int.Parse(quartoId);
+                    Models.Quarto quarto = Models.Quarto.Get(idInt);
 
-                quarto.NumeroQuarto = int.Parse(numero_quarto);
-                quarto.Descricao = descricao;
-                quarto.Valor = Double.Parse(valor);
-                quarto.Disponivel = disponivel != null && disponivel != "" &&  disponivel == "Sim" ? true : false;
-                quarto.HotelId = int.Parse(hotelId);
+                    quarto.Numero_quarto = numero_quarto;
+                    quarto.Descricao = descricao;
+                    quarto.Valor = valor;
+                    quarto.Disponivel = disponivel;
+                    quarto.HotelId = int.Parse(hotelId);
 
-                quartoCrud.Alterar(quarto);
+                    Models.Quarto.Alterar(quarto);
 
-                return quarto;
+                    return quarto;
+                }
+                {
+                    throw new Exception("Quarto não existe");
+                }
             }
             catch (System.Exception)
             {
+
                 throw new Exception("Erro ao alterar Quarto");
             }
         }
@@ -63,23 +76,24 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                Models.Quarto quarto = quartoCrud.Get(int.Parse(id));
-                quartoCrud.Excluir(quarto.Id);
+                if (id != null)
+                {
+                    int idInt = int.Parse(id);
+                    Models.Quarto quarto = Models.Quarto.Get(idInt);
+                    Models.Quarto.Excluir(idInt);
 
-                return quarto;
-
+                    return quarto;
+                }
+                else
+                {
+                    throw new Exception("Quarto não encontrado");
+                }
             }
             catch (System.Exception)
             {
+
                 throw new Exception("Erro ao excluir Quarto!");
             }
-        }
-
-        public static void GetQuartoDisponivel (Models.Quarto quarto)
-        {
-            if (quarto.Disponivel == false)
-                throw new Exception("Quarto não disponível");
-
         }
     }
 }

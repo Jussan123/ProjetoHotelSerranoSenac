@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoHotelSerranoSenac.Models.Generic
 {
-    public class CreateReadUpdateDelete<T> : ICreateReadUpdateDelete<T> where T : class
+    public abstract class CreateReadUpdateDelete<T> : ICreateReadUpdateDelete<T> where T : class
     {
         public T Cadastrar(T obj)
         {
