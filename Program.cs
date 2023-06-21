@@ -7,8 +7,10 @@ static class Program
     /// </summary>
     static void Main()
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        // start the program
-    }    
+        Application.EnableVisualStyles();
+        //Aqui está chamando a TelaPrincipal só para teste, 
+        //mas depois vai chamar a tela de Login,
+        //e a tela de Login vai chamar a TelaPrincipal
+        Application.Run(new Login());
+    }
 }

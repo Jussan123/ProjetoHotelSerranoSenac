@@ -6,9 +6,9 @@ namespace ProjetoHotelSerranoSenac.Controllers
     {
         public static Models.Produto produtoCrud = new();
 
-        public static Models.Produto CadastrarProduto(string nome, string preco, string quantidade, string precoVenda, string precoCompra)
+        public static Models.Produto CadastrarProduto(string nome, string preco, string quantidade,  string precoCompra, string hotelId)
         {
-            Models.Produto produto = new(nome, Double.Parse(preco), Double.Parse(precoVenda), Double.Parse(precoCompra));
+            Models.Produto produto = new(nome, Double.Parse(preco),  Double.Parse(quantidade),  Double.Parse(precoCompra), int.Parse(hotelId));
             return produtoCrud.Cadastrar(produto);
         }
 
@@ -23,8 +23,7 @@ namespace ProjetoHotelSerranoSenac.Controllers
         {
             try
             {
-                int idInt = int.Parse(id);
-                Models.Produto produto = produtoCrud.Get(idInt);
+                Models.Produto produto = produtoCrud.Get(int.Parse(id));
 
                 return produto;
 
@@ -35,7 +34,7 @@ namespace ProjetoHotelSerranoSenac.Controllers
             }
         }
 
-        public static Models.Produto AlterarProduto(string produtoId, string nome, string preco, string precoVenda, string precoCompra)
+        public static Models.Produto AlterarProduto(string produtoId, string nome, string preco, string quantidade,  string precoCompra, string hotelId)
         {
             try
             {
@@ -44,8 +43,9 @@ namespace ProjetoHotelSerranoSenac.Controllers
 
                 produto.Nome = nome;
                 produto.Preco = Double.Parse(preco);
-                produto.PrecoVenda = Double.Parse(precoVenda);
+                produto.Quantidade = Double.Parse(quantidade);
                 produto.PrecoCompra = Double.Parse(precoCompra);
+                produto.HotelId = int.Parse(hotelId);
 
                 produtoCrud.Alterar(produto);
 
