@@ -145,11 +145,11 @@ namespace ProjetoHotelSerranoSenac
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaCliente listaClienteForm = new ListaCliente();
-            // listaClienteForm.TopLevel = false;
-            // listaClienteForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaClienteForm);
-            // listaClienteForm.Show();
+            ListaCliente listaClienteForm = new ListaCliente();
+            listaClienteForm.TopLevel = false;
+            listaClienteForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaClienteForm);
+            listaClienteForm.Show();
         }
 
         private void btnQuartoClick(object sender, EventArgs e)
