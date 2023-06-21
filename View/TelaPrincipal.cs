@@ -1,6 +1,6 @@
-using ProjetoHotelSerranoSenac;
+using View;
 
-namespace View
+namespace ProjetoHotelSerranoSenac
 {
 
     public class TelaPrincipal : Form
@@ -22,6 +22,7 @@ namespace View
         public TelaPrincipal()
         {
             this.Text = "Hotel Serrano";
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
             lblMenu = new Label();
             lblMenu.Text = "AQUI VAI A LOGO";
@@ -31,7 +32,7 @@ namespace View
             pictureBox = new PictureBox();
             pictureBox.Location = new Point(300, 100);
             pictureBox.Size = new Size(400, 300);
-            pictureBox.Image = Image.FromFile(@"Logo\Captura de tela de 2021-07-01 20-02-55.png");
+            pictureBox.Image = Image.FromFile("View/Resources/LogoBranco-Verde.png");
 
             btnProdutoExemplo = new Button();
             btnProdutoExemplo.Text = "Btn Exemplo";
@@ -118,11 +119,13 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaReservas listaReservasForm = new ListaReservas();
-            // listaReservasForm.TopLevel = false;
-            // listaReservasForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaReservasForm);
-            // listaReservasForm.Show();
+            ListaReserva listaReservasForm = new ListaReserva();
+            listaReservasForm.TopLevel = false;
+            listaReservasForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaReservasForm);
+            listaReservasForm.Show();
+
+            //new Reserva().ShowDialog();
         }
 
         private void btnFuncionariosClick(object sender, EventArgs e)
