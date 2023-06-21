@@ -8,9 +8,19 @@ namespace ProjetoHotelSerranoSenac.Controllers
         public static bool GetLogin(string email, string senha)
         {
             Models.Funcionario funcionario = Controllers.Funcionario.GetFuncionarioByEmail(email);
-            string hashSenha = GenerateHashCode(senha.GetHashCode()).ToString();
+            string hashSenha = GenerateHashCode(StringToInt(senha)).ToString();
 
             return funcionario.Senha == hashSenha;
+        }
+
+        public static int StringToInt(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                int result = BitConverter.ToInt32(hashBytes, 0);
+                return result;
+            }
         }
 
         public static int GenerateHashCode(int hashValue)
