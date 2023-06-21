@@ -6,7 +6,7 @@ using View;
 
 namespace View 
 {
-    public class ListaProduto : Form
+    public class RelatorioProduto : Form
     {
         private Panel buttonPanel = new Panel();
         private DataGridView produtoGridView = new DataGridView();
@@ -15,14 +15,14 @@ namespace View
         private Button deletarProdutoButton = new Button();
         private Button voltarButton = new Button();
 
-        public ListaProduto()
+        public RelatorioProduto()
         {
             this.Text = "Listagem de Produto";
-            this.Load += new EventHandler(ListaProduto_Load);
+            this.Load += new EventHandler(RelatorioProduto_Load);
             this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
-        private void ListaProduto_Load(System.Object sender, System.EventArgs e)
+        private void RelatorioProduto_Load(System.Object sender, System.EventArgs e)
         {
             SetupLayout();
             SetupDataGridView();
@@ -55,37 +55,15 @@ namespace View
 
         private void SetupLayout()
         {
-            
             this.Size = new Size(600, 400);
             this.BackColor = System.Drawing.ColorTranslator.FromHtml("#3E5E50");
-
-            adicionarProdutoButton.Text = "Novo";
-            adicionarProdutoButton.Location = new Point(270, 10);
-            adicionarProdutoButton.BackColor = Color.Snow;
-            adicionarProdutoButton.Click += new EventHandler(adicionarProdutoButton_Click);
-            adicionarProdutoButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            atualizarProdutoButton.Text = "Editar";
-            atualizarProdutoButton.Location = new Point(350, 10);
-            atualizarProdutoButton.BackColor = Color.Snow;
-            atualizarProdutoButton.Click += new EventHandler(atualizarProdutoButton_Click);
-            atualizarProdutoButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            deletarProdutoButton.Text = "Excluir";
-            deletarProdutoButton.Location = new Point(430, 10);
-            deletarProdutoButton.BackColor = Color.Snow;
-            deletarProdutoButton.Click += new EventHandler(deletarProdutoButton_Click);
-            deletarProdutoButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             voltarButton.Text = "Voltar";
             voltarButton.Location = new Point(510, 10);
             voltarButton.BackColor = Color.Snow;
             voltarButton.Click += new EventHandler(voltarButton_Click);
             voltarButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            
-            buttonPanel.Controls.Add(adicionarProdutoButton);
-            buttonPanel.Controls.Add(atualizarProdutoButton);
-            buttonPanel.Controls.Add(deletarProdutoButton);
+
             buttonPanel.Controls.Add(voltarButton);
             buttonPanel.Height = 50;
             buttonPanel.Dock = DockStyle.Bottom;
@@ -102,10 +80,10 @@ namespace View
 
             produtoGridView.ColumnCount = 6;
 
-            produtoGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Green;
-            produtoGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.LightGreen;
+            produtoGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            produtoGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             produtoGridView.ColumnHeadersDefaultCellStyle.Font =
-                new Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                new Font(produtoGridView.Font, FontStyle.Bold);
 
             produtoGridView.Name = "produtoGridView";
             produtoGridView.Location = new Point(8, 8);
@@ -114,7 +92,6 @@ namespace View
             produtoGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             produtoGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             produtoGridView.GridColor = Color.Black;
-            produtoGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml(" #C0CCDA");
             produtoGridView.RowHeadersVisible = false;
 
             produtoGridView.Columns[0].Name = "Id";
@@ -152,53 +129,6 @@ namespace View
             }
         }
 
-        private void adicionarProdutoButton_Click(object sender, EventArgs e)
-        {
-            Produto telaProduto = new Produto(null);
-            telaProduto.FormClosed += new FormClosedEventHandler(recarregarDadosGrid);
-            telaProduto.ShowDialog();
-        }
-
-        private void atualizarProdutoButton_Click(object sender, EventArgs e)
-        {
-            if (this.produtoGridView.SelectedRows.Count > 0 &&
-                this.produtoGridView.SelectedRows[0].Index !=
-                this.produtoGridView.Rows.Count - 1)
-            {
-                string idProdutoSelecionado = produtoGridView.Rows[this.produtoGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
-                Produto telaCliente = new Produto(Int32.Parse(idProdutoSelecionado));
-                telaCliente.FormClosed += new FormClosedEventHandler(recarregarDadosGrid);
-                telaCliente.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Nenhum cliente foi selecionado!");
-            }
-        }
-
-        private void deletarProdutoButton_Click(object sender, EventArgs e)
-        {
-            if (this.produtoGridView.SelectedRows.Count > 0 &&
-                this.produtoGridView.SelectedRows[0].Index !=
-                this.produtoGridView.Rows.Count - 1)
-            {
-                var confirmResult = MessageBox.Show("Tem certeza que deseja excluir o item?", "Exclusão de Item", MessageBoxButtons.YesNo);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    string idProduto = produtoGridView.Rows[this.produtoGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
-                    ProjetoHotelSerranoSenac.Controllers.Produto.ExcluirProduto(idProduto);
-                    MessageBox.Show("Produto excluído com sucesso!");
-                    PopulateDataGridView();
-                    this.produtoGridView.Refresh();
-                }
-                else
-                {
-                    MessageBox.Show("Operação cancelada");
-                }
-
-            }
-        }
         private void recarregarDadosGrid(object sender, FormClosedEventArgs e)
         {
             PopulateDataGridView();
