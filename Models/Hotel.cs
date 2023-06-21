@@ -8,6 +8,7 @@ namespace ProjetoHotelSerranoSenac.Models
 {
     public class Hotel : CreateReadUpdateDelete<Hotel>
     {
+        //Hoteis (hotelId, nome, endereco, telefone)
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Endereco { get; set; }

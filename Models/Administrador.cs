@@ -6,20 +6,22 @@ using ProjetoHotelSerranoSenac.Models.Generic;
 
 namespace ProjetoHotelSerranoSenac.Models
 {
-    public class Produto : CreateReadUpdateDelete<Produto>
+    public class Administrador : CreateReadUpdateDelete<Administrador>
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public double Preco { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
         public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
 
-        public Produto() { }
+        public Administrador() { }
 
-        public Produto(string nome, double preco, int hotelId)
+        public Administrador(string nome, string email, string senha, int hotelId)
         {
             Nome = nome;
-            Preco = preco;
+            Email = email;
+            Senha = senha;
             HotelId = hotelId;
         }
     }
