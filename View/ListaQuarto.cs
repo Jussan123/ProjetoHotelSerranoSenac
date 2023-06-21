@@ -185,7 +185,10 @@ namespace View
 
                 if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show(this.quartoGridView.SelectedRows[0].Index.ToString());
+                    string idQuarto = quartoGridView.Rows[this.quartoGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+                    ProjetoHotelSerranoSenac.Controllers.Quarto.ExcluirQuarto(idQuarto);
+                    MessageBox.Show("Quarto excluído com sucesso!");
+                    PopulateDataGridView();
                     this.quartoGridView.Refresh();
                 }
                 else

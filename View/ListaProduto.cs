@@ -186,7 +186,10 @@ namespace View
 
                 if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show(this.produtoGridView.SelectedRows[0].Index.ToString());
+                    string idProduto = produtoGridView.Rows[this.produtoGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+                    ProjetoHotelSerranoSenac.Controllers.Produto.ExcluirProduto(idProduto);
+                    MessageBox.Show("Produto excluído com sucesso!");
+                    PopulateDataGridView();
                     this.produtoGridView.Refresh();
                 }
                 else
