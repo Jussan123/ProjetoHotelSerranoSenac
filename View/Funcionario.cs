@@ -107,17 +107,16 @@ namespace View
             lblSenha = new Label();
             lblSenha.Text = "Senha:";
             lblSenha.AutoSize = true;
-            lblSenha.Location = new Point(10, 280);
+            lblSenha.Location = new Point(300, 190);
             lblSenha.ForeColor = Color.Snow;
             lblSenha.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
             maskedTxtSenha = new MaskedTextBox();
-            maskedTxtSenha.Location = new Point(70, 280);
+            maskedTxtSenha.Location = new Point(380, 190);
             maskedTxtSenha.Size = new Size(200, 100);
             maskedTxtSenha.ForeColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
             maskedTxtSenha.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             maskedTxtSenha.UseSystemPasswordChar = true;
-            //txtSenha.PasswordChar = '*';
 
             btnVoltar = new Button();
             btnVoltar.Text = "Voltar";
@@ -215,6 +214,8 @@ namespace View
             this.txtTelefone.Text = funcionario.Telefone;
             this.txtSalario.Text = funcionario.Salario.ToString();
             this.comboBoxPerfil.SelectedItem = funcionario.Role;
+            this.maskedTxtSenha.Text = funcionario.Senha;
+            this.maskedTxtSenha.Enabled = false;
         }
 
     }

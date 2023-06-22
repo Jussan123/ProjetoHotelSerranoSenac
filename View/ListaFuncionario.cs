@@ -63,7 +63,7 @@ namespace View
             adicionarFuncionarioButton.BackColor = Color.Snow;
             adicionarFuncionarioButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
-            atualizarFuncionarioButton.Text = "Atualizar";
+            atualizarFuncionarioButton.Text = "Editar";
             atualizarFuncionarioButton.Location = new Point(300, 10);
             atualizarFuncionarioButton.Click += new EventHandler(atualizarFuncionarioButton_Click);
             atualizarFuncionarioButton.BackColor = Color.Snow;
