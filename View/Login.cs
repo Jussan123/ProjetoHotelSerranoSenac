@@ -2,14 +2,15 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace  ProjetoHotelSerranoSenac
+namespace ProjetoHotelSerranoSenac
 {
     public class Login : Form
     {
-      
-      public Login() {
-        InitializeComponent();
-      }
+
+        public Login()
+        {
+            InitializeComponent();
+        }
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
@@ -243,7 +244,7 @@ namespace  ProjetoHotelSerranoSenac
 
 
         }
-        
+
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
@@ -264,9 +265,9 @@ namespace  ProjetoHotelSerranoSenac
 
 
 
-         private void Login_Load(object sender, EventArgs e)
+        private void Login_Load(object sender, EventArgs e)
         {
-      
+
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -277,18 +278,23 @@ namespace  ProjetoHotelSerranoSenac
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             //condicional para efetuar login
-            
-            if(Controllers.Login.GetLogin(txtEmail.Text,txtSenha.Text))
+            try
             {
-                
+                if (Controllers.Login.GetLogin(txtEmail.Text, txtSenha.Text))
+                {
+                    TelaPrincipal telaPrincipal = new TelaPrincipal();
+                    telaPrincipal.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha inválidos");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-                
-            }
-            else
-            {
-                MessageBox.Show("Usuário ou senha inválidos");
-            }
-            
         }
 
     }
