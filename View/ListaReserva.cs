@@ -88,7 +88,7 @@ namespace View
         {
             this.Controls.Add(reservaGridView);
 
-            reservaGridView.ColumnCount = 3;
+            reservaGridView.ColumnCount = 7;
 
             reservaGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             reservaGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -97,7 +97,7 @@ namespace View
 
             reservaGridView.Name = "reservaGridView";
             reservaGridView.Location = new Point(8, 8);
-            reservaGridView.Size = new Size(600, 400);
+            reservaGridView.Size = new Size(650, 400);
             reservaGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             reservaGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             reservaGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
@@ -105,10 +105,12 @@ namespace View
             reservaGridView.RowHeadersVisible = false;
 
             reservaGridView.Columns[0].Name = "Id";
-            reservaGridView.Columns[1].Name = "Nome";
-            reservaGridView.Columns[2].Name = "Preço";
-            reservaGridView.Columns[2].DefaultCellStyle.Font =
-                new Font(reservaGridView.DefaultCellStyle.Font, FontStyle.Italic);
+            reservaGridView.Columns[1].Name = "Cliente";
+            reservaGridView.Columns[2].Name = "Quarto";
+            reservaGridView.Columns[3].Name = "Data Checkin";
+            reservaGridView.Columns[4].Name = "Data Checkout";
+            reservaGridView.Columns[5].Name = "Preço";
+            reservaGridView.Columns[6].Name = "Hotel";
 
             reservaGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             reservaGridView.MultiSelect = false;
@@ -119,28 +121,48 @@ namespace View
 
         private void PopulateDataGridView()
         {
+            reservaGridView.Rows.Clear();
 
-            string[] row0 = { "1", "Carro", "10" };
-            string[] row1 = { "2", "Bicicleta", "20" };
-            string[] row2 = { "3", "Moto", "30" };
+            IEnumerable<ProjetoHotelSerranoSenac.Models.Reserva> collectionReservas = ProjetoHotelSerranoSenac.Controllers.Reserva.GetAllReservas();
 
-            reservaGridView.Rows.Add(row0);
-            reservaGridView.Rows.Add(row1);
-            reservaGridView.Rows.Add(row2);
+            if (collectionReservas != null && collectionReservas.Count() > 0)
+            {
+                foreach (var item in collectionReservas)
+                {
+                    ProjetoHotelSerranoSenac.Models.Cliente clienteReserva = ProjetoHotelSerranoSenac.Controllers.Cliente.GetCliente(item.ClienteId.ToString());
+                    ProjetoHotelSerranoSenac.Models.Quarto quartoReserva = ProjetoHotelSerranoSenac.Controllers.Quarto.GetQuarto(item.QuartoId.ToString());
+                    ProjetoHotelSerranoSenac.Models.Hotel hotelReserva = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(item.HotelId.ToString());
+
+                    String quartoNroDescricao = String.Concat(quartoReserva.NumeroQuarto, " - ", quartoReserva.Descricao);
+                    string[] linhaReserva = { item.Id.ToString(), clienteReserva.Nome, quartoNroDescricao, item.DataCheckin.ToString(), item.DataCheckout.ToString(), item.Preco.ToString(), hotelReserva.Nome};
+
+                    reservaGridView.Rows.Add(linhaReserva);
+                }
+            }
         }
 
         private void adicionarReservaButton_Click(object sender, EventArgs e)
         {
-            Reserva telaReserva = new Reserva();
+            Reserva telaReserva = new Reserva(null);
+            telaReserva.FormClosed += new FormClosedEventHandler(recarregarDadosGrid);            
             telaReserva.ShowDialog();
         }
 
         private void atualizarReservaButton_Click(object sender, EventArgs e)
         {
-            //aqui na atualização/edição vai pegar o id da linha selecionada e passar por parâmetro o idSelecionado
-            // Produto telaProduto = new Produto(idSelecionado);
-            // telaProduto.ShowDialog();
-            this.reservaGridView.Rows.Add();
+            if (this.reservaGridView.SelectedRows.Count > 0 &&
+                this.reservaGridView.SelectedRows[0].Index !=
+                this.reservaGridView.Rows.Count - 1)
+            {
+                string idReservaSelecionado = reservaGridView.Rows[this.reservaGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+                Reserva telaReserva = new Reserva(Int32.Parse(idReservaSelecionado));
+                telaReserva.FormClosed += new FormClosedEventHandler(recarregarDadosGrid);
+                telaReserva.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma reserva foi selecionado!");
+            }
         }
 
         private void deletarReservaButton_Click(object sender, EventArgs e)
@@ -149,20 +171,32 @@ namespace View
                 this.reservaGridView.SelectedRows[0].Index !=
                 this.reservaGridView.Rows.Count - 1)
             {
-                var confirmResult = MessageBox.Show("Tem certeza que deseja excluir o item?", "Exclusão de Item", MessageBoxButtons.YesNo);
+                var confirmResult = MessageBox.Show("Tem certeza que deseja excluir o Reserva?", "Exclusão de Reserva", MessageBoxButtons.YesNo);
 
                 if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show(this.reservaGridView.SelectedRows[0].Index.ToString());
+                    string idReserva = reservaGridView.Rows[this.reservaGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+                    ProjetoHotelSerranoSenac.Controllers.Reserva.ExcluirReserva(idReserva);
+                    MessageBox.Show("Reserva excluída com sucesso!");
+                    PopulateDataGridView();
                     this.reservaGridView.Refresh();
                 }
                 else
                 {
                     MessageBox.Show("Operação cancelada");
                 }
-
+            }
+            else
+            {
+                MessageBox.Show("Nenhum reserva foi selecionado!");
             }
         }
+
+        private void recarregarDadosGrid(object sender, FormClosedEventArgs e)
+        {
+            PopulateDataGridView();
+            this.reservaGridView.Refresh();
+        }        
 
         private void voltarButton_Click(object sender, EventArgs e)
         {
