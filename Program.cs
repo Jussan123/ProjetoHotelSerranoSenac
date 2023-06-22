@@ -1,10 +1,10 @@
-using View;
-
 namespace ProjetoHotelSerranoSenac;
 
 static class Program
 {
-    [STAThread]
+    /// <summary>
+    ///  The main entry point for the application.
+    /// </summary>
     static void Main()
     {
         Application.EnableVisualStyles();
