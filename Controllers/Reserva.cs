@@ -22,13 +22,15 @@ namespace ProjetoHotelSerranoSenac.Controllers
 
             Models.Hotel hotel = hotelCrud.Get(int.Parse(hotelId));
 
-            Models.Reserva reserva = new(cliente.Id, quarto.Id, DateTime.Parse(dataCheckin), DateTime.Parse(dataCheckout), 0, hotel.Id);
+            Models.Reserva reserva = new(cliente.Id, quarto.Id, DateTime.Parse(dataCheckin), DateTime.Parse(dataCheckout), Double.Parse(valor), hotel.Id);
+
+            reserva = reservaCrud.Cadastrar(reserva);
 
             TimeSpan diferenca = reserva.DataCheckout - reserva.DataCheckin;
             ReservarServico(reserva.Id, Controllers.Servico.GetServicoDiaria().Id, DateTime.Parse(dataCheckin), diferenca.Days);
             ReservarServico(reserva.Id, Controllers.Servico.GetServicoLimpeza().Id, DateTime.Parse(dataCheckout), 1);
 
-            return reservaCrud.Cadastrar(reserva);
+            return reserva;
         }
 
         public static IEnumerable<Models.Reserva> GetAllReservas()
