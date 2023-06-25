@@ -2,24 +2,25 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace  ProjetoHotelSerranoSenac
+namespace ProjetoHotelSerranoSenac
 {
     public class Login : Form
     {
-      
-      public Login() {
-        InitializeComponent();
-      }
+
+        public Login()
+        {
+            InitializeComponent();
+        }
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnEntrar = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtSenha = new System.Windows.Forms.MaskedTextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -29,6 +30,7 @@ namespace  ProjetoHotelSerranoSenac
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblLogin = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.AcceptButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -52,9 +54,9 @@ namespace  ProjetoHotelSerranoSenac
             // pictureBox1
             // ;
             this.pictureBox1.Image = Image.FromFile("View/Resources/LogoBranco-Verde.png");
-            this.pictureBox1.Location = new System.Drawing.Point(71, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(70, 170);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -64,7 +66,7 @@ namespace  ProjetoHotelSerranoSenac
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(80, 204);
+            this.label1.Location = new System.Drawing.Point(50, 320);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(218, 24);
             this.label1.TabIndex = 1;
@@ -86,12 +88,12 @@ namespace  ProjetoHotelSerranoSenac
             // 
             // txtLogin
             // 
-            this.txtLogin.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(142)))), ((int)(((byte)(131)))));
-            this.txtLogin.Location = new System.Drawing.Point(51, 8);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(370, 27);
-            this.txtLogin.TabIndex = 6;
+            this.txtEmail.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(142)))), ((int)(((byte)(131)))));
+            this.txtEmail.Location = new System.Drawing.Point(51, 8);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(370, 27);
+            this.txtEmail.TabIndex = 6;
             // 
             // btnEntrar
             // 
@@ -105,12 +107,13 @@ namespace  ProjetoHotelSerranoSenac
             this.btnEntrar.TabIndex = 5;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = false;
+            this.AcceptButton = btnEntrar;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.Controls.Add(this.maskedTextBox1);
+            this.panel7.Controls.Add(this.txtSenha);
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Controls.Add(this.panel10);
             this.panel7.Location = new System.Drawing.Point(0, 243);
@@ -120,12 +123,12 @@ namespace  ProjetoHotelSerranoSenac
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(51, 9);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(370, 26);
-            this.maskedTextBox1.TabIndex = 6;
-            this.maskedTextBox1.UseSystemPasswordChar = true;
+            this.txtSenha.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Location = new System.Drawing.Point(51, 9);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(370, 26);
+            this.txtSenha.TabIndex = 6;
+            this.txtSenha.UseSystemPasswordChar = true;
             // 
             // panel8
             // 
@@ -155,7 +158,7 @@ namespace  ProjetoHotelSerranoSenac
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.txtLogin);
+            this.panel3.Controls.Add(this.txtEmail);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -227,7 +230,6 @@ namespace  ProjetoHotelSerranoSenac
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -243,7 +245,7 @@ namespace  ProjetoHotelSerranoSenac
 
 
         }
-        
+
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
@@ -257,17 +259,14 @@ namespace  ProjetoHotelSerranoSenac
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox txtLogin;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnEntrar;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtSenha;
         private System.Windows.Forms.PictureBox pictureBox1;
 
 
 
-         private void Login_Load(object sender, EventArgs e)
-        {
-      
-        }
+
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -277,8 +276,23 @@ namespace  ProjetoHotelSerranoSenac
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             //condicional para efetuar login
-            
-            new TelaPrincipal().Show();
+            try
+            {
+                if (Controllers.Login.GetLogin(txtEmail.Text, txtSenha.Text))
+                {
+                    TelaPrincipal telaPrincipal = new TelaPrincipal();
+                    telaPrincipal.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha inválidos");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
     }

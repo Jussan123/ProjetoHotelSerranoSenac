@@ -19,7 +19,6 @@ namespace View
         {
             this.Text = "Listagem de Quarto";
             this.Load += new EventHandler(ListaQuarto_Load);
-            this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void ListaQuarto_Load(System.Object sender, System.EventArgs e)
@@ -56,7 +55,7 @@ namespace View
         private void SetupLayout()
         {
             this.Size = new Size(600, 400);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#3E5E50");
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
             adicionarQuartoButton.Text = "Novo";
             adicionarQuartoButton.Location = new Point(270, 10);
@@ -113,7 +112,8 @@ namespace View
             quartoGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             quartoGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             quartoGridView.GridColor = Color.Black;
-            quartoGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml(" #C0CCDA");
+            quartoGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
+
             quartoGridView.RowHeadersVisible = false;
 
             quartoGridView.Columns[0].Name = "Id";

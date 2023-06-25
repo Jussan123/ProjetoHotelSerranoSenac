@@ -56,7 +56,7 @@ namespace View
         private void SetupLayout()
         {
             this.Size = new Size(600, 400);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#3E5E50");
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
             voltarButton.Text = "Voltar";
             voltarButton.Location = new Point(510, 10);

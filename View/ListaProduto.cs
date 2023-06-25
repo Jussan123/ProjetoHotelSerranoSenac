@@ -19,7 +19,6 @@ namespace View
         {
             this.Text = "Listagem de Produto";
             this.Load += new EventHandler(ListaProduto_Load);
-            this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void ListaProduto_Load(System.Object sender, System.EventArgs e)
@@ -57,7 +56,7 @@ namespace View
         {
             
             this.Size = new Size(600, 400);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#3E5E50");
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
             adicionarProdutoButton.Text = "Novo";
             adicionarProdutoButton.Location = new Point(270, 10);
@@ -114,7 +113,8 @@ namespace View
             produtoGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             produtoGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             produtoGridView.GridColor = Color.Black;
-            produtoGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml(" #C0CCDA");
+            produtoGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
+
             produtoGridView.RowHeadersVisible = false;
 
             produtoGridView.Columns[0].Name = "Id";

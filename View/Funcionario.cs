@@ -18,6 +18,8 @@ namespace View
         TextBox txtTelefone;
         Label lblSalario;
         TextBox txtSalario;
+        MaskedTextBox maskedTxtSenha;
+        Label lblSenha;
         Button btnConfirmar;
         Button btnVoltar;
         ProgressBar pbTest;
@@ -102,6 +104,20 @@ namespace View
             txtSalario.ForeColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
             txtSalario.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
+            lblSenha = new Label();
+            lblSenha.Text = "Senha:";
+            lblSenha.AutoSize = true;
+            lblSenha.Location = new Point(300, 190);
+            lblSenha.ForeColor = Color.Snow;
+            lblSenha.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            maskedTxtSenha = new MaskedTextBox();
+            maskedTxtSenha.Location = new Point(380, 190);
+            maskedTxtSenha.Size = new Size(200, 100);
+            maskedTxtSenha.ForeColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
+            maskedTxtSenha.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            maskedTxtSenha.UseSystemPasswordChar = true;
+
             btnVoltar = new Button();
             btnVoltar.Text = "Voltar";
             btnVoltar.Location = new Point(400, 10);
@@ -123,6 +139,8 @@ namespace View
             buttonPanel.Height = 50;
             buttonPanel.Dock = DockStyle.Bottom;
 
+            this.Controls.Add(this.lblSenha);
+            this.Controls.Add(this.maskedTxtSenha);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblEmail);
@@ -159,7 +177,7 @@ namespace View
                 }
                 else
                 {
-                    ProjetoHotelSerranoSenac.Controllers.Funcionario.CadastrarFuncionario(nome, email, "", telefone, role, salario);
+                    ProjetoHotelSerranoSenac.Controllers.Funcionario.CadastrarFuncionario(nome, email, maskedTxtSenha.Text, telefone, role, salario);
                     MessageBox.Show("Funcionario cadastrado com sucesso!");
                 }
 
@@ -196,6 +214,8 @@ namespace View
             this.txtTelefone.Text = funcionario.Telefone;
             this.txtSalario.Text = funcionario.Salario.ToString();
             this.comboBoxPerfil.SelectedItem = funcionario.Role;
+            this.maskedTxtSenha.Text = funcionario.Senha;
+            this.maskedTxtSenha.Enabled = false;
         }
 
     }
