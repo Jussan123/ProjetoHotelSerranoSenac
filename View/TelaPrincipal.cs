@@ -22,7 +22,7 @@ namespace ProjetoHotelSerranoSenac
         public TelaPrincipal()
         {
             this.Text = "Hotel Serrano";
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 
             lblMenu = new Label();
             //lblMenu.Text = "AQUI VAI A LOGO";
@@ -34,11 +34,11 @@ namespace ProjetoHotelSerranoSenac
             pictureBox.Size = new Size(400, 300);
             pictureBox.Image = Image.FromFile("View/Resources/LogoBranco-Verde.png");
 
-            btnProdutoExemplo = new Button();
-            btnProdutoExemplo.Text = "Btn Exemplo";
-            btnProdutoExemplo.Size = new Size(100, 30);
-            btnProdutoExemplo.Location = new Point(20, 60);
-            btnProdutoExemplo.Click += new EventHandler(this.btnProdutoExemploClick);
+            // btnProdutoExemplo = new Button();
+            // btnProdutoExemplo.Text = "Btn Exemplo";
+            // btnProdutoExemplo.Size = new Size(100, 30);
+            // btnProdutoExemplo.Location = new Point(20, 60);
+            // btnProdutoExemplo.Click += new EventHandler(this.btnProdutoExemploClick);
 
             btnReservas = new Button();
             btnReservas.Text = "Reservas";
@@ -124,8 +124,6 @@ namespace ProjetoHotelSerranoSenac
             listaReservasForm.AutoScroll = true;
             this.contentPanel.Controls.Add(listaReservasForm);
             listaReservasForm.Show();
-
-            //new Reserva().ShowDialog();
         }
 
         private void btnFuncionariosClick(object sender, EventArgs e)

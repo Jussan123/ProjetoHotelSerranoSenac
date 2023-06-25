@@ -30,6 +30,7 @@ namespace ProjetoHotelSerranoSenac
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblLogin = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.AcceptButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -106,6 +107,7 @@ namespace ProjetoHotelSerranoSenac
             this.btnEntrar.TabIndex = 5;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = false;
+            this.AcceptButton = btnEntrar;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // panel7
@@ -228,7 +230,6 @@ namespace ProjetoHotelSerranoSenac
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -265,10 +266,7 @@ namespace ProjetoHotelSerranoSenac
 
 
 
-        private void Login_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {

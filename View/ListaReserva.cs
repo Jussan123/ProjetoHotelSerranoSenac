@@ -13,12 +13,12 @@ namespace View
         private Button atualizarReservaButton = new Button();
         private Button deletarReservaButton = new Button();
         private Button voltarButton = new Button();
+        PictureBox pictureBox = new PictureBox();
 
         public ListaReserva()
         {
             this.Text = "Listagem de Reserva";
             this.Load += new EventHandler(listaReserva_Load);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
         }
 
         private void listaReserva_Load(System.Object sender, System.EventArgs e)
@@ -56,29 +56,33 @@ namespace View
         {
             adicionarReservaButton.Text = "Novo";
             adicionarReservaButton.Location = new Point(270, 10);
+            adicionarReservaButton.BackColor = Color.Snow;
             adicionarReservaButton.Click += new EventHandler(adicionarReservaButton_Click);
 
             atualizarReservaButton.Text = "Editar";
             atualizarReservaButton.Location = new Point(350, 10);
+            atualizarReservaButton.BackColor = Color.Snow;
             atualizarReservaButton.Click += new EventHandler(atualizarReservaButton_Click);
 
             deletarReservaButton.Text = "Excluir";
             deletarReservaButton.Location = new Point(430, 10);
+            deletarReservaButton.BackColor = Color.Snow;
             deletarReservaButton.Click += new EventHandler(deletarReservaButton_Click);
 
             voltarButton.Text = "Voltar";
             voltarButton.Location = new Point(510, 10);
+            voltarButton.BackColor = Color.Snow;
             voltarButton.Click += new EventHandler(voltarButton_Click);
-
+           
             buttonPanel.Controls.Add(adicionarReservaButton);
             buttonPanel.Controls.Add(atualizarReservaButton);
             buttonPanel.Controls.Add(deletarReservaButton);
             buttonPanel.Controls.Add(voltarButton);
             buttonPanel.Height = 50;
-            buttonPanel.Dock = DockStyle.Bottom;
-
-            this.BackColor = Color.AliceBlue;
+            buttonPanel.Dock = DockStyle.Bottom;    
+            
             this.Size = new Size(600, 400);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Controls.Add(this.buttonPanel);
@@ -102,6 +106,8 @@ namespace View
             reservaGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             reservaGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             reservaGridView.GridColor = Color.Black;
+            reservaGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
+
             reservaGridView.RowHeadersVisible = false;
 
             reservaGridView.Columns[0].Name = "Id";

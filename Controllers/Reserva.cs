@@ -13,7 +13,7 @@ namespace ProjetoHotelSerranoSenac.Controllers
         public static Models.ReservaProduto reservaProdutoCrud = new();
         public static Models.ReservaServico reservaServicoCrud = new();
 
-        public static Models.Reserva CadastrarReserva(string clienteId, string quartoId, string dataCheckin, string dataCheckout, string hotelId)
+        public static Models.Reserva CadastrarReserva(string clienteId, string quartoId, string dataCheckin, string dataCheckout, string hotelId, string valor)
         {
             Models.Cliente cliente = clienteCrud.Get(int.Parse(clienteId));
 

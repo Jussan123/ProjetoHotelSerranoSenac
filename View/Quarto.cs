@@ -30,6 +30,8 @@ namespace View
 			this.Text = "Cadastro de Quarto";
 
             this.Size = new Size(600, 500);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
 			
             lblId = new Label();
