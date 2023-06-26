@@ -108,7 +108,8 @@ namespace View
 
         private void btnRelatorioFuncionariosClick(object sender, EventArgs e)
         {
-            //Aqui vai chamar a classe para gerar o relatório de Funcionarios
+            RelatorioFuncionarios relatorioCliente = new RelatorioFuncionarios();
+            MessageBox.Show("Relatório gerado com sucesso!");
         }
     }
 }
