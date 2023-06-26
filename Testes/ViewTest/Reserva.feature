@@ -2,23 +2,26 @@
 
 Funcionalidade: Reserva
 
-Cenário: Preencher dados da reserva
-    Dado que estou na tela de cadastro de reserva
-    Quando preencho o campo "Clientes" com um cliente existente
-    E seleciono um quarto disponível no campo "Quartos"
-    E preencho a data do check-in com uma data válida
-    E preencho a data do check-out com uma data válida
-    E preencho o campo "Valor" com um valor válido
-    Então devo ver os dados da reserva preenchidos corretamente
+Cenário: Cadastrar Reserva
+    Dado que eu estou na tela de Cadastro de Reserva
+    Quando eu preencher os campos obrigatórios corretamente
+    E clicar no botão "Confirmar"
+    Então eu devo ver uma mensagem de sucesso de cadastro
+    E a tela de Cadastro de Reserva deve ser fechada
 
-Cenário: Salvar reserva
-    Dado que estou na tela de cadastro de reserva
-    Quando preencho os dados da reserva corretamente
-    E clico no botão "Salvar"
-    Então a reserva deve ser salva com sucesso
+Cenário: Editar Reserva
+    Dado que eu estou na tela de Cadastro de Reserva com um ID de reserva válido
+    Quando eu fizer alterações nos campos
+    E clicar no botão "Confirmar"
+    Então eu devo ver uma mensagem de sucesso de atualização
+    E a tela de Cadastro de Reserva deve ser fechada
 
-Cenário: Cancelar reserva
-    Dado que estou na tela de cadastro de reserva
-    Quando preencho os dados da reserva corretamente
-    E clico no botão "Cancelar"
-    Então a operação de cadastro de reserva deve ser cancelada
+Cenário: Visualizar Reserva Existente
+    Dado que eu estou na tela de Cadastro de Reserva com um ID de reserva válido
+    Quando a tela for carregada
+    Então os campos devem ser preenchidos com os dados da reserva correspondente
+
+Cenário: Voltar para a tela anterior
+    Dado que eu estou na tela de Cadastro de Reserva
+    Quando eu clicar no botão "Voltar"
+    Então a tela de Cadastro de Reserva deve ser fechada

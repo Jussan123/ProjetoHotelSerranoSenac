@@ -2,33 +2,26 @@
 
 Funcionalidade: Login
 
-Cenário: Abrir tela de login
-    Dado que o sistema está aberto
-    Quando eu iniciar o aplicativo
-    Então devo ver a tela de login
+Cenário: Abrir formulário de login
+    Dado que o formulário de login está fechado
+    Quando eu abrir o formulário de login
+    Então eu devo ver o formulário de login exibido
 
-Cenário: Fechar aplicativo
-    Dado que estou na tela de login
-    Quando eu clicar no botão Fechar
-    Então o aplicativo deve ser encerrado
+Cenário: Fechar formulário de login
+    Dado que o formulário de login está aberto
+    Quando eu clicar no botão de fechar
+    Então o formulário de login deve ser fechado
 
-Cenário: Realizar login com sucesso
-    Dado que estou na tela de login
-    E informo o login "username"
-    E informo a senha "password"
-    Quando eu clicar no botão Entrar
-    Então devo ser redirecionado para a tela principal
+Cenário: Entrar com dados de login válidos
+    Dado que o formulário de login está aberto
+    E eu preencho o campo de email com "example@example.com"
+    E eu preencho o campo de senha com "password123"
+    Quando eu clicar no botão de entrar
+    Então eu devo ser redirecionado para a tela principal
 
-Cenário: Informar login inválido
-    Dado que estou na tela de login
-    E informo um login inválido
-    E informo uma senha válida
-    Quando eu clicar no botão Entrar
-    Então devo ver uma mensagem de erro
-
-Cenário: Informar senha inválida
-    Dado que estou na tela de login
-    E informo um login válido
-    E informo uma senha inválida
-    Quando eu clicar no botão Entrar
-    Então devo ver uma mensagem de erro
+Cenário: Entrar com dados de login inválidos
+    Dado que o formulário de login está aberto
+    E eu preencho o campo de email com "invalid@example.com"
+    E eu preencho o campo de senha com "invalidpassword"
+    Quando eu clicar no botão de entrar
+    Então eu devo ver uma mensagem de erro informando que os dados de login são inválidos
