@@ -3,30 +3,27 @@
 Funcionalidade: Lista de Funcionários
 
 Cenário: Exibir lista de funcionários
-    Dado que estou na tela de "Listagem de Funcionário"
-    Quando a tela for carregada
-    Então devo ver a lista de funcionários exibida no grid
+    Quando eu abrir a "ListaFuncionario"
+    Então eu devo ver uma lista de funcionários exibida na grade de dados
 
 Cenário: Adicionar novo funcionário
-    Dado que estou na tela de "Listagem de Funcionário"
     Quando eu clicar no botão "Novo"
-    Então devo ser redirecionado para a tela de "Cadastro de Funcionário"
+    Então eu devo ser redirecionado para a tela de cadastro de funcionário
 
-Cenário: Atualizar funcionário existente
-    Dado que estou na tela de "Listagem de Funcionário"
-    E tenho um funcionário selecionado na lista
-    Quando eu clicar no botão "Atualizar"
-    Então devo ser redirecionado para a tela de "Cadastro de Funcionário" preenchida com os dados do funcionário selecionado
+Cenário: Editar funcionário existente
+    Dado que tenha selecionado um funcionário na lista
+    Quando eu clicar no botão "Editar"
+    Então eu devo ser redirecionado para a tela de edição do funcionário selecionado
 
-Cenário: Excluir funcionário existente
-    Dado que estou na tela de "Listagem de Funcionário"
-    E tenho um funcionário selecionado na lista
+Cenário: Excluir funcionário
+    Dado que tenha selecionado um funcionário na lista
     Quando eu clicar no botão "Excluir"
-    Então devo ver uma mensagem de confirmação de exclusão
-    E ao confirmar a exclusão, o funcionário deve ser removido da lista
+    Então devo ser solicitado a confirmar a exclusão do funcionário
+    E se eu confirmar a exclusão
+        Então o funcionário selecionado deve ser excluído da lista
+    E se eu cancelar a exclusão
+        Então a operação deve ser cancelada
 
-Cenário: Voltar para tela anterior
-    Dado que estou na tela de "Listagem de Funcionário"
+Cenário: Voltar para a tela anterior
     Quando eu clicar no botão "Voltar"
-    Então devo voltar para a tela anterior
-
+    Então a tela atual deve ser fechada

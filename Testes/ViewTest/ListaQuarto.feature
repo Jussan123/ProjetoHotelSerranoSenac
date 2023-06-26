@@ -2,36 +2,30 @@
 
 Funcionalidade: Lista de Quartos
 
-Cenário: Carregar Lista de Quartos
-    Dado que eu estou na tela de "Listagem de Quarto"
-    Quando a tela é carregada
-    Então eu devo ver um painel com botões de ação
-    E eu devo ver uma grade de dados para exibir os quartos
-    E a grade de dados deve ter as colunas corretas
-    E a grade de dados deve ter formatação adequada
-    E a grade de dados deve exibir os quartos corretamente
+Cenário: Exibir Lista de Quartos
+    Dado que eu abro a tela de Listagem de Quartos
+    Então eu devo ver a listagem dos quartos disponíveis
 
 Cenário: Adicionar Novo Quarto
-    Dado que eu estou na tela de "Listagem de Quarto"
-    Quando eu clicar no botão "Novo"
-    Então eu devo ser redirecionado para a tela de "Quarto" para adicionar um novo quarto
+    Dado que estou na tela de Listagem de Quartos
+    Quando eu clico no botão "Novo"
+    Então eu devo ser redirecionado para a tela de Cadastro de Quarto
 
 Cenário: Editar Quarto Existente
-    Dado que eu estou na tela de "Listagem de Quarto"
-    E um quarto existente está selecionado na grade de dados
-    Quando eu clicar no botão "Editar"
-    Então eu devo ser redirecionado para a tela de "Quarto" para editar o quarto selecionado
+    Dado que estou na tela de Listagem de Quartos
+    E tenho um quarto selecionado na lista
+    Quando eu clico no botão "Editar"
+    Então eu devo ser redirecionado para a tela de Edição do Quarto selecionado
 
-Cenário: Excluir Quarto Existente
-    Dado que eu estou na tela de "Listagem de Quarto"
-    E um quarto existente está selecionado na grade de dados
-    Quando eu clicar no botão "Excluir"
-    Então devo ver uma mensagem de confirmação de exclusão
-    E se eu confirmar a exclusão, o quarto selecionado deve ser excluído
-    E devo ver uma mensagem de sucesso
-    E a grade de dados deve ser atualizada
+Cenário: Excluir Quarto
+    Dado que estou na tela de Listagem de Quartos
+    E tenho um quarto selecionado na lista
+    Quando eu clico no botão "Excluir"
+    Então eu devo ver uma confirmação de exclusão do quarto
+    E, se confirmado, o quarto deve ser excluído da lista de quartos
 
-Cenário: Voltar à Tela Anterior
-    Dado que eu estou na tela de "Listagem de Quarto"
-    Quando eu clicar no botão "Voltar"
-    Então a tela de "Listagem de Quarto" deve ser fechada
+Cenário: Voltar para a Tela Anterior
+    Dado que estou na tela de Listagem de Quartos
+    Quando eu clico no botão "Voltar"
+    Então eu devo ser redirecionado para a tela anterior
+

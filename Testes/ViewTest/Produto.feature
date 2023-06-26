@@ -1,35 +1,30 @@
 #language : pt
 
-Funcionalidade: Cadastro de Produto
+Funcionalidade: Produto
 
-Cenário: Cadastrar novo Produto
-    Dado que estou na tela de cadastro de Produto
-    Quando eu preencher os campos obrigatórios com os seguintes valores:
-        | Campo             | Valor             |
-        | Nome              | Produto A         |
-        | Preco             | 10.99             |
-        | Preco de Compra   | 8.50              |
-        | Quantidade        | 100               |
-        | Hotel             | Hotel XYZ         |
-    E eu clicar no botão Confirmar
+Cenário: Cadastrar Produto
+    Dado que estou na tela de cadastro de produto
+    E preencho o campo "Nome" com "Produto Teste"
+    E preencho o campo "Preco" com "100.00"
+    E preencho o campo "Quantidade" com "10"
+    E preencho o campo "Preco de Compra" com "80.00"
+    E seleciono o hotel "Hotel Teste"
+    Quando eu clicar no botão "Confirmar"
     Então eu devo ver a mensagem "Produto cadastrado com sucesso!"
-    E a tela de cadastro de Produto deve ser fechada
+    E a tela de cadastro de produto deve ser fechada
 
-Cenário: Editar Produto existente
-    Dado que estou na tela de cadastro de Produto com o ID do Produto "1"
-    E o Produto com ID "1" existe no sistema
-    Quando eu preencher os campos obrigatórios com os seguintes valores:
-        | Campo             | Valor             |
-        | Nome              | Produto B         |
-        | Preco             | 15.99             |
-        | Preco de Compra   | 12.50             |
-        | Quantidade        | 200               |
-        | Hotel             | Hotel ABC         |
-    E eu clicar no botão Confirmar
+Cenário: Editar Produto
+    Dado que estou na tela de cadastro de produto com o ID do produto "1"
+    E preencho o campo "Nome" com "Produto Teste Editado"
+    E preencho o campo "Preco" com "150.00"
+    E preencho o campo "Quantidade" com "5"
+    E preencho o campo "Preco de Compra" com "120.00"
+    E seleciono o hotel "Hotel Teste"
+    Quando eu clicar no botão "Confirmar"
     Então eu devo ver a mensagem "Produto atualizado com sucesso!"
-    E a tela de cadastro de Produto deve ser fechada
+    E a tela de cadastro de produto deve ser fechada
 
 Cenário: Voltar para a tela anterior
-    Dado que estou na tela de cadastro de Produto
-    Quando eu clicar no botão Voltar
-    Então a tela de cadastro de Produto deve ser fechada
+    Dado que estou na tela de cadastro de produto
+    Quando eu clicar no botão "Voltar"
+    Então a tela de cadastro de produto deve ser fechada
