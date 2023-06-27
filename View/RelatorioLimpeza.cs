@@ -19,23 +19,23 @@ namespace View
             PdfGrid pdfGrid = new PdfGrid();
 
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Id");
+            dataTable.Columns.Add("Id Reserva");
             dataTable.Columns.Add("Cliente");
-            dataTable.Columns.Add("Quarto");
-            dataTable.Columns.Add("Data Checkin");
-            dataTable.Columns.Add("Data Checkout");
-            dataTable.Columns.Add("Preço");
+            dataTable.Columns.Add("Serviço");
+            dataTable.Columns.Add("Data do Serviço");
             dataTable.Columns.Add("Hotel");
 
-            foreach (var item in ProjetoHotelSerranoSenac.Controllers.Reserva.GetAllReservas())
+            foreach (var reserva in ProjetoHotelSerranoSenac.Controllers.Reserva.GetAllReservas())
             {
-                ProjetoHotelSerranoSenac.Models.Cliente clienteReserva = ProjetoHotelSerranoSenac.Controllers.Cliente.GetCliente(item.ClienteId.ToString());
-                ProjetoHotelSerranoSenac.Models.Quarto quartoReserva = ProjetoHotelSerranoSenac.Controllers.Quarto.GetQuarto(item.QuartoId.ToString());
-                ProjetoHotelSerranoSenac.Models.Hotel hotelReserva = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(item.HotelId.ToString());
+                foreach (var reservaServico in ProjetoHotelSerranoSenac.Controllers.Reserva.GetAllReservaServicos(reserva.Id.ToString()))
+                {
+                    ProjetoHotelSerranoSenac.Models.Cliente clienteReserva = ProjetoHotelSerranoSenac.Controllers.Cliente.GetCliente(reserva.ClienteId.ToString());
+                    ProjetoHotelSerranoSenac.Models.Hotel hotelReserva = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(reserva.HotelId.ToString());
+                    ProjetoHotelSerranoSenac.Models.Servico servicoReserva = ProjetoHotelSerranoSenac.Controllers.Servico.GetServico(reservaServico.Id.ToString());
 
-                String quartoNroDescricao = String.Concat(quartoReserva.NumeroQuarto, " - ", quartoReserva.Descricao);
-                object[] linhaReserva = { item.Id.ToString(), clienteReserva.Nome, quartoNroDescricao, item.DataCheckin.ToString(), item.DataCheckout.ToString(), item.Preco.ToString(), hotelReserva.Nome };
-                dataTable.Rows.Add(linhaReserva);
+                    object[] linhaReserva = { reserva.Id.ToString(), clienteReserva.Nome, servicoReserva.TipoServico, reservaServico.DataServico.ToString(), hotelReserva.Nome };
+                    dataTable.Rows.Add(linhaReserva);
+                }
             }
 
             pdfGrid.DataSource = dataTable;
