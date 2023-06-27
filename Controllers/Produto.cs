@@ -72,5 +72,18 @@ namespace ProjetoHotelSerranoSenac.Controllers
                 throw new Exception("Erro ao excluir Produto: " + e.Message);
             }
         }
+
+        public static double CalcularValorProdutos(){
+            IEnumerable<Models.Produto> produtos = produtoCrud.GetAll();
+            double totalProdutos = 0;
+
+            foreach (Models.Produto produto in produtos)
+            {
+                double valorCompraProduto = produto.PrecoCompra;
+                totalProdutos += valorCompraProduto;
+            }
+
+            return totalProdutos;
+        }
     }
 }

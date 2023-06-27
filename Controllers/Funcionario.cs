@@ -91,14 +91,14 @@ namespace ProjetoHotelSerranoSenac.Controllers
             }
         }
 
-        public static double CalcularValorSalarioFuncionarios(int quantidadeDias)
+        public static double CalcularValorSalarioFuncionarios()
         {
             IEnumerable<Models.Funcionario> funcionarios = funcionarioCrud.GetAll();
             double totalSalario = 0;
 
             foreach (Models.Funcionario funcionario in funcionarios)
             {
-                double salarioFuncionario = funcionario.Salario * (quantidadeDias / 30.0);
+                double salarioFuncionario = funcionario.Salario;
                 totalSalario += salarioFuncionario;
             }
 
