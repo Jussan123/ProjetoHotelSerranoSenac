@@ -166,39 +166,6 @@ namespace View
             this.Close();
         }
 
-        private void adicionarHoteisCombobox()
-        {
-            comboboxHotel.Items.Clear();
-            IEnumerable<ProjetoHotelSerranoSenac.Models.Hotel> collectionHotel = ProjetoHotelSerranoSenac.Controllers.Hotel.GetAllHoteis();
-
-            if (collectionHotel != null && collectionHotel.Count() > 0)
-            {
-                this.listHotel.AddRange(collectionHotel.ToList());
-
-                foreach (var hotel in collectionHotel)
-                {
-                    comboboxHotel.Items.Add(hotel.Nome);
-                }
-
-                comboboxHotel.SelectedIndex = 0;
-            }
-        }
-
-
-        private ProjetoHotelSerranoSenac.Models.Hotel buscarHotelSelecionadoCombobox()
-        {
-            ProjetoHotelSerranoSenac.Models.Hotel hotelSelecionado = new ProjetoHotelSerranoSenac.Models.Hotel();
-
-            if (comboboxHotel.SelectedItem != null)
-            {
-                String nomeHotel = comboboxHotel.SelectedItem.ToString();
-
-                hotelSelecionado = this.listHotel.Where(item => item.Nome.Equals(nomeHotel)).FirstOrDefault();
-            }
-
-            return hotelSelecionado;
-        }
-
         private void confirmarClienteButton_Click(object sender, EventArgs e)
         {
             try
@@ -208,10 +175,9 @@ namespace View
                 ProjetoHotelSerranoSenac.Models.Quarto quartoSelecionado = this.buscarQuartoSelecionadoCombobox();
                 ProjetoHotelSerranoSenac.Models.Hotel hotelSelecionado = this.buscarHotelSelecionadoCombobox();
 
-
                 if (this.txtId.Text != null && Int32.TryParse(this.txtId.Text, out int idCliente))
                 {
-                    // ProjetoHotelSerranoSenac.Controllers.Reserva.AlterarReserva(this.txtId.Text, hotelSelecionado.Id.ToString());
+                    ProjetoHotelSerranoSenac.Controllers.Reserva.AlterarReserva(this.txtId.Text, clienteSelecionado.Id.ToString(), quartoSelecionado.Id.ToString(), txtDataCheckIn.Text, txtDataCheckOut.Text, txtPreco.Text, hotelSelecionado.Id.ToString());
                     MessageBox.Show("Reserva atualizada com sucesso!");
                 }
                 else
@@ -247,6 +213,56 @@ namespace View
             }
         }
 
+        private void adicionarQuartosCombobox()
+        {
+            comboboxQuarto.Items.Clear();
+            IEnumerable<ProjetoHotelSerranoSenac.Models.Quarto> collectionQuarto = ProjetoHotelSerranoSenac.Controllers.Quarto.GetAllQuartos();
+
+            if (collectionQuarto != null && collectionQuarto.Count() > 0)
+            {
+                this.listQuarto.AddRange(collectionQuarto.ToList());
+
+                foreach (var quarto in collectionQuarto)
+                {
+                    comboboxQuarto.Items.Add(quarto.Descricao);
+                }
+
+                comboboxQuarto.SelectedIndex = 0;
+            }
+        }
+
+        private void adicionarHoteisCombobox()
+        {
+            comboboxHotel.Items.Clear();
+            IEnumerable<ProjetoHotelSerranoSenac.Models.Hotel> collectionHotel = ProjetoHotelSerranoSenac.Controllers.Hotel.GetAllHoteis();
+
+            if (collectionHotel != null && collectionHotel.Count() > 0)
+            {
+                this.listHotel.AddRange(collectionHotel.ToList());
+
+                foreach (var hotel in collectionHotel)
+                {
+                    comboboxHotel.Items.Add(hotel.Nome);
+                }
+
+                comboboxHotel.SelectedIndex = 0;
+            }
+        }
+
+        private ProjetoHotelSerranoSenac.Models.Hotel buscarHotelSelecionadoCombobox()
+        {
+            ProjetoHotelSerranoSenac.Models.Hotel hotelSelecionado = new ProjetoHotelSerranoSenac.Models.Hotel();
+
+            if (comboboxHotel.SelectedItem != null)
+            {
+                String nomeHotel = comboboxHotel.SelectedItem.ToString();
+
+                hotelSelecionado = this.listHotel.Where(item => item.Nome.Equals(nomeHotel)).FirstOrDefault();
+            }
+
+            return hotelSelecionado;
+        }        
+
         private ProjetoHotelSerranoSenac.Models.Cliente buscarClienteSelecionadoCombobox()
         {
             ProjetoHotelSerranoSenac.Models.Cliente clienteSelecionado = new ProjetoHotelSerranoSenac.Models.Cliente();
@@ -273,36 +289,20 @@ namespace View
             }
 
             return quartoSelecionado;
-        }
-
-        private void adicionarQuartosCombobox()
-        {
-            comboboxQuarto.Items.Clear();
-            IEnumerable<ProjetoHotelSerranoSenac.Models.Quarto> collectionQuarto = ProjetoHotelSerranoSenac.Controllers.Quarto.GetAllQuartos();
-
-            if (collectionQuarto != null && collectionQuarto.Count() > 0)
-            {
-                this.listQuarto.AddRange(collectionQuarto.ToList());
-
-                foreach (var quarto in collectionQuarto)
-                {
-                    comboboxQuarto.Items.Add(quarto.Descricao);
-                }
-
-                comboboxQuarto.SelectedIndex = 0;
-            }
-        }
+        }        
 
         private void setarDadoReservaEdicao(int? reservaId)
         {
-            ProjetoHotelSerranoSenac.Models.Cliente cliente = ProjetoHotelSerranoSenac.Controllers.Cliente.GetCliente(buscarClienteSelecionadoCombobox().ToString());
             ProjetoHotelSerranoSenac.Models.Reserva reserva = ProjetoHotelSerranoSenac.Controllers.Reserva.GetReserva(reservaId.ToString());
-            ProjetoHotelSerranoSenac.Models.Hotel hotel = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(cliente.HotelId.ToString());
-            ProjetoHotelSerranoSenac.Models.Quarto quarto = ProjetoHotelSerranoSenac.Controllers.Quarto.GetQuarto(buscarQuartoSelecionadoCombobox().ToString());
+
+            ProjetoHotelSerranoSenac.Models.Cliente cliente = ProjetoHotelSerranoSenac.Controllers.Cliente.GetCliente(reserva.ClienteId.ToString());
+            ProjetoHotelSerranoSenac.Models.Hotel hotel = ProjetoHotelSerranoSenac.Controllers.Hotel.GetHotel(reserva.HotelId.ToString());
+            ProjetoHotelSerranoSenac.Models.Quarto quarto = ProjetoHotelSerranoSenac.Controllers.Quarto.GetQuarto(reserva.QuartoId.ToString());
 
             this.txtId.Text = reservaId.ToString();
+            this.txtPreco.Text = reserva.Preco.ToString();
             this.txtDataCheckIn.Text = reserva.DataCheckin.ToString();
-            this.txtDataCheckIn.Text = reserva.DataCheckout.ToString();
+            this.txtDataCheckOut.Text = reserva.DataCheckout.ToString();
             this.comboboxCliente.SelectedItem = cliente.Nome;
             this.comboboxQuarto.SelectedItem = quarto.Descricao;
             this.comboboxHotel.SelectedItem = hotel.Nome;
