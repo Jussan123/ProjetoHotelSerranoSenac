@@ -80,7 +80,8 @@ namespace View
 
         private void btnRelatorioDespesasClick(object sender, EventArgs e)
         {
-            //Aqui vai chamar a classe para gerar o relatório de Despesas
+            RelatorioDespesas relatorioDespesas = new RelatorioDespesas();
+            relatorioDespesas.ShowDialog();
         }
 
         private void btnRelatorioReservasClick(object sender, EventArgs e)
