@@ -104,7 +104,8 @@ namespace View
 
         private void btnRelatorioLimpezaClick(object sender, EventArgs e)
         {
-            //Aqui vai chamar a classe para gerar o relatório de Limpeza
+            RelatorioLimpeza relatorioLimpeza = new RelatorioLimpeza();
+            MessageBox.Show("Relatório gerado com sucesso!");
         }
 
         private void btnRelatorioFuncionariosClick(object sender, EventArgs e)

@@ -1,6 +1,19 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {}
+  },
+  "projects": {
+    "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
+        "projectName": "ProjetoHotelSerranoSenac",
+        "projectPath": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
+        "packagesPath": "C:\\Users\\thiag\\.nuget\\packages\\",
+        "outputPath": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\obj\\",
+=======
     "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {}
   },
   "projects": {
@@ -12,21 +25,22 @@
         "projectPath": "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
         "packagesPath": "C:\\Users\\vitor.silva16\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\obj\\",
+>>>>>>> develop
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
+<<<<<<< HEAD
+          "C:\\Users\\thiag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
           "C:\\Users\\vitor.silva16\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> develop
         ],
         "originalTargetFrameworks": [
           "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -94,7 +108,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
