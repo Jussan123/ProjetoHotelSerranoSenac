@@ -75,6 +75,5 @@ namespace ProjetoHotelSerranoSenac.Controllers
                 throw new Exception("Erro ao excluir Cliente: " + e.Message);
             }
         }
-
     }
 }
