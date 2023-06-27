@@ -29,6 +29,8 @@ namespace View
         public Cliente(int? clienteId)
         {
             this.Text = "Cadastro de Cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
 
             this.Size = new Size(600, 600);
 
@@ -81,11 +83,13 @@ namespace View
 
             btnConfirmar = new Button();
             btnConfirmar.Text = "Confirmar";
+            btnConfirmar.BackColor = Color.Snow;
             btnConfirmar.Location = new Point(420, 10);
             btnConfirmar.Click += new EventHandler(confirmarClienteButton_Click);
 
             btnVoltar = new Button();
             btnVoltar.Text = "Voltar";
+            btnVoltar.BackColor = Color.Snow;
             btnVoltar.Location = new Point(500, 10);
             btnVoltar.Click += new EventHandler(voltarButton_Click);
 

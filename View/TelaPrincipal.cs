@@ -1,6 +1,6 @@
-using ProjetoHotelSerranoSenac;
+using View;
 
-namespace View
+namespace ProjetoHotelSerranoSenac
 {
 
     public class TelaPrincipal : Form
@@ -22,22 +22,23 @@ namespace View
         public TelaPrincipal()
         {
             this.Text = "Hotel Serrano";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 
             lblMenu = new Label();
-            lblMenu.Text = "AQUI VAI A LOGO";
+            //lblMenu.Text = "AQUI VAI A LOGO";
             lblMenu.Location = new Point(20, 20);
             lblMenu.Size = new Size(120, 30);
             
             pictureBox = new PictureBox();
             pictureBox.Location = new Point(300, 100);
             pictureBox.Size = new Size(400, 300);
-            pictureBox.Image = Image.FromFile(@"Logo\Captura de tela de 2021-07-01 20-02-55.png");
+            pictureBox.Image = Image.FromFile("View/Resources/LogoBranco-Verde.png");
 
-            btnProdutoExemplo = new Button();
-            btnProdutoExemplo.Text = "Btn Exemplo";
-            btnProdutoExemplo.Size = new Size(100, 30);
-            btnProdutoExemplo.Location = new Point(20, 60);
-            btnProdutoExemplo.Click += new EventHandler(this.btnProdutoExemploClick);
+            // btnProdutoExemplo = new Button();
+            // btnProdutoExemplo.Text = "Btn Exemplo";
+            // btnProdutoExemplo.Size = new Size(100, 30);
+            // btnProdutoExemplo.Location = new Point(20, 60);
+            // btnProdutoExemplo.Click += new EventHandler(this.btnProdutoExemploClick);
 
             btnReservas = new Button();
             btnReservas.Text = "Reservas";
@@ -118,11 +119,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaReservas listaReservasForm = new ListaReservas();
-            // listaReservasForm.TopLevel = false;
-            // listaReservasForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaReservasForm);
-            // listaReservasForm.Show();
+            ListaReserva listaReservasForm = new ListaReserva();
+            listaReservasForm.TopLevel = false;
+            listaReservasForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaReservasForm);
+            listaReservasForm.Show();
         }
 
         private void btnFuncionariosClick(object sender, EventArgs e)
@@ -130,11 +131,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaFuncionarios listaFuncionariosForm = new ListaFuncionarios();
-            // listaFuncionariosForm.TopLevel = false;
-            // listaFuncionariosForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaFuncionariosForm);
-            // listaFuncionariosForm.Show();
+            ListaFuncionario listaFuncionariosForm = new ListaFuncionario();
+            listaFuncionariosForm.TopLevel = false;
+            listaFuncionariosForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaFuncionariosForm);
+            listaFuncionariosForm.Show();
         }
 
         private void btnClienteClick(object sender, EventArgs e)
@@ -154,11 +155,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaQuarto listaQuartoForm = new ListaQuarto();
-            // listaQuartoForm.TopLevel = false;
-            // listaQuartoForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaQuartoForm);
-            // listaQuartoForm.Show();
+            ListaQuarto listaQuartoForm = new ListaQuarto();
+            listaQuartoForm.TopLevel = false;
+            listaQuartoForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaQuartoForm);
+            listaQuartoForm.Show();
         }
 
         private void btnProdutoClick(object sender, EventArgs e)
@@ -166,11 +167,11 @@ namespace View
             this.Controls.Remove(pictureBox);
             this.contentPanel.Controls.Clear();
 
-            // ListaProduto listaProdutoForm = new ListaProduto();
-            // listaProdutoForm.TopLevel = false;
-            // listaProdutoForm.AutoScroll = true;
-            // this.contentPanel.Controls.Add(listaProdutoForm);
-            // listaProdutoForm.Show();
+            ListaProduto listaProdutoForm = new ListaProduto();
+            listaProdutoForm.TopLevel = false;
+            listaProdutoForm.AutoScroll = true;
+            this.contentPanel.Controls.Add(listaProdutoForm);
+            listaProdutoForm.Show();
         }
 
         private void btnRelatoriosClick(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace View
         {
             this.Text = "Listagem de Cliente";
             this.Load += new EventHandler(ListaCliente_Load);
+
         }
 
         private void ListaCliente_Load(System.Object sender, System.EventArgs e)
@@ -55,18 +56,22 @@ namespace View
         {
             adicionarClienteButton.Text = "Novo";
             adicionarClienteButton.Location = new Point(270, 10);
+            adicionarClienteButton.BackColor = Color.Snow;
             adicionarClienteButton.Click += new EventHandler(adicionarClienteButton_Click);
 
             atualizarClienteButton.Text = "Editar";
             atualizarClienteButton.Location = new Point(350, 10);
+            atualizarClienteButton.BackColor = Color.Snow;
             atualizarClienteButton.Click += new EventHandler(atualizarClienteButton_Click);
 
             deletarClienteButton.Text = "Excluir";
             deletarClienteButton.Location = new Point(430, 10);
+            deletarClienteButton.BackColor = Color.Snow;
             deletarClienteButton.Click += new EventHandler(deletarClienteButton_Click);
 
             voltarButton.Text = "Voltar";
             voltarButton.Location = new Point(510, 10);
+            voltarButton.BackColor = Color.Snow;
             voltarButton.Click += new EventHandler(voltarButton_Click);
 
             buttonPanel.Controls.Add(adicionarClienteButton);
@@ -76,8 +81,8 @@ namespace View
             buttonPanel.Height = 50;
             buttonPanel.Dock = DockStyle.Bottom;
 
-            this.BackColor = Color.AliceBlue;
             this.Size = new Size(600, 400);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Controls.Add(this.buttonPanel);
@@ -101,6 +106,8 @@ namespace View
             clienteGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             clienteGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             clienteGridView.GridColor = Color.Black;
+            clienteGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
+
             clienteGridView.RowHeadersVisible = false;
 
             clienteGridView.Columns[0].Name = "Id";
