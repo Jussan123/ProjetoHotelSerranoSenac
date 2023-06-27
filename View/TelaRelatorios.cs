@@ -85,7 +85,8 @@ namespace View
 
         private void btnRelatorioReservasClick(object sender, EventArgs e)
         {
-            //Aqui vai chamar a classe para gerar o relatório de Reservas
+            RelatorioReservas relatorioReservas = new RelatorioReservas();
+            MessageBox.Show("Relatório gerado com sucesso!");
         }
 
         private void btnRelatorioProdutosClick(object sender, EventArgs e)
