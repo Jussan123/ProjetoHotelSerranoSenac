@@ -72,10 +72,11 @@ namespace View
         private void voltarButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }
 
 
-        private void buscarTotais(){
+        private void buscarTotais()
+        {
             double totalSalarios = ProjetoHotelSerranoSenac.Controllers.Funcionario.CalcularValorSalarioFuncionarios();
             double totalProdutos = ProjetoHotelSerranoSenac.Controllers.Produto.CalcularValorProdutos();
 
