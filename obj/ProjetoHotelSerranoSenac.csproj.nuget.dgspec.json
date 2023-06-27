@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {}
   },
   "projects": {
@@ -12,9 +13,28 @@
         "projectPath": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
         "packagesPath": "C:\\Users\\thiag\\.nuget\\packages\\",
         "outputPath": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\obj\\",
+=======
+    "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
+        "projectName": "ProjetoHotelSerranoSenac",
+        "projectPath": "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
+        "packagesPath": "C:\\Users\\vitor.silva16\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vitor.silva16\\Desktop\\Jussan\\ProjetoHotelSerranoSenac\\obj\\",
+>>>>>>> develop
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\thiag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+          "C:\\Users\\vitor.silva16\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> develop
         ],
         "originalTargetFrameworks": [
           "net7.0-windows"
