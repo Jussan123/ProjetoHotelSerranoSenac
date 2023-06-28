@@ -92,15 +92,14 @@ namespace View
 
         private void btnRelatorioProdutosClick(object sender, EventArgs e)
         {
-            
-            RelatorioProduto listaProdutoForm = new RelatorioProduto();
-            listaProdutoForm.ShowDialog();     
-
+            RelatorioProduto relatorioProduto = new RelatorioProduto();
+            MessageBox.Show("Relatório gerado com sucesso!");  
         }
 
         private void btnRelatorioHospedesClick(object sender, EventArgs e)
         {
-            //Aqui vai chamar a classe para gerar o relatório de Quarto
+            RelatorioHospedes relatorioHospedes = new RelatorioHospedes();
+            MessageBox.Show("Relatório gerado com sucesso!");  
         }
 
         private void btnRelatorioLimpezaClick(object sender, EventArgs e)
