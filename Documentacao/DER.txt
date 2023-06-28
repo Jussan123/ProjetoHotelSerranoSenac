@@ -1,0 +1,89 @@
+Table Hoteis {
+  hotelId int [PK]
+  nome VARCHAR(255)
+  endereco VARCHAR(255)
+  telefone VARCHAR(255)
+}
+
+Table Cliente {
+  clienteId INT [pk]
+  nome VARCHAR(255)
+  email VARCHAR(255)
+  telefone VARCHAR(255)
+  hotelId INT [ref: > Hoteis.hotelId]
+}
+
+Table Quarto {
+  quartoId INT [pk]
+  numero_quarto INT
+  descricao VARCHAR(255)
+  disponivel BOOLEAN
+  valor decimal(10,2)
+  hotelId INT [ref: > Hoteis.hotelId]
+}
+
+Table Reserva {
+  reservaId INT [pk]
+  clienteId INT [ref: > Cliente.clienteId]
+  quartoId INT [ref: > Quarto.quartoId]
+  data_checkin DATETIME
+  data_checkout DATETIME
+  preco DECIMAL(10,2)
+  hotelId INT [ref: > Hoteis.hotelId]
+}
+
+Table Checkin {
+  checkinId INT [pk]
+  reservaId INT [ref: > Reserva.reservaId]
+  data_checkin DATETIME
+}
+
+Table Checkout {
+  checkoutId INT [pk]
+  reservaId INT [ref: > Reserva.reservaId]
+  despesaId int [ref: > Despesa.despesaId]
+  valorFinal decimal(10,2)
+  data_checkout DATETIME
+}
+
+Table Limpezas {
+  limpezaId INT [pk]
+  quartoId INT [ref: > Quarto.quartoId]
+  data DATETIME
+  checkoutId INT [ref: > Checkout.checkoutId]
+  funcionarioId int [ref: > Funcionario.funcionarioId]
+}
+
+Table Produto {
+  produtoId INT [pk]
+  nome VARCHAR(255)
+  preco DECIMAL(10,2)
+  quantidade int
+  hotelId INT [ref: > Hoteis.hotelId]
+}
+
+Table Despesa {
+  despesaId INT [pk]
+  reservaId INT [ref: > Reserva.reservaId]
+  produtoId INT [ref: > Produto.produtoId]
+  valor DECIMAL(10,2)
+  quantidadeProduto INT
+  }
+
+Table Administrador {
+  administradorId INT [pk]
+  nome VARCHAR(255)
+  email VARCHAR(255)
+  senha VARCHAR(255)
+  hotelId INT [ref: > Hoteis.hotelId]
+}
+
+Table Funcionario {
+  funcionarioId INT [pk]
+  nome VARCHAR(255)
+  email VARCHAR(255)
+  telefone VARCHAR(255)
+  salario DECIMAL(10,2)
+  funcao VARCHAR(255)
+  hotelId INT [ref: > Hoteis.hotelId]
+}
