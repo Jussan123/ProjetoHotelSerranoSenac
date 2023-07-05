@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {}
+    "C:\\Users\\rodri\\Desktop\\main projeto petri\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {}
   },
   "projects": {
-    "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {
+    "C:\\Users\\rodri\\Desktop\\main projeto petri\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
+        "projectUniqueName": "C:\\Users\\rodri\\Desktop\\main projeto petri\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
         "projectName": "ProjetoHotelSerranoSenac",
-        "projectPath": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
-        "packagesPath": "C:\\Users\\thiag\\.nuget\\packages\\",
-        "outputPath": "C:\\DesenvolvimentoDesktop\\ProjetoHotelSerranoSenac\\obj\\",
+        "projectPath": "C:\\Users\\rodri\\Desktop\\main projeto petri\\ProjetoHotelSerranoSenac\\ProjetoHotelSerranoSenac.csproj",
+        "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rodri\\Desktop\\main projeto petri\\ProjetoHotelSerranoSenac\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\thiag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\rodri\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,6 +76,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.2, 7.0.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -88,7 +105,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.3.23178.7\\RuntimeIdentifierGraph.json"
         }
       }
     }
