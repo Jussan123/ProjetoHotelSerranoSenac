@@ -2,30 +2,37 @@
 
 Funcionalidade: Lista de Reservas
 
-Cenário: Exibir lista de reservas
-    Dado que estou na tela de Lista de Reservas
-    Quando a tela for carregada
-    Então devo ver a lista de reservas preenchida
+Cenário: Exibição da lista de reservas
+    Dado que estou na página de lista de reservas
+    Quando a página for carregada
+    Então devo ver um layout com botões e uma grade de visualização
+    E a grade de visualização deve ser preenchida com os dados das reservas
+
+Cenário: Formatação da célula de data
+    Dado que estou na página de lista de reservas
+    Quando a célula de data for formatada
+    Então a célula de data deve exibir a data no formato longo
 
 Cenário: Adicionar nova reserva
-    Dado que estou na tela de Lista de Reservas
+    Dado que estou na página de lista de reservas
     Quando eu clicar no botão "Novo"
-    Então devo ser redirecionado para a tela de Reserva
+    Então devo ser redirecionado para a página de adição de reserva
 
-Cenário: Atualizar reserva
-    Dado que estou na tela de Lista de Reservas
-    E tenho uma reserva selecionada na lista
+Cenário: Editar reserva existente
+    Dado que estou na página de lista de reservas
+    E tenho uma reserva selecionada
     Quando eu clicar no botão "Editar"
-    Então devo adicionar uma nova linha na lista de reservas
+    Então devo ser redirecionado para a página de edição da reserva selecionada
 
-Cenário: Excluir reserva
-    Dado que estou na tela de Lista de Reservas
-    E tenho uma reserva selecionada na lista
+Cenário: Excluir reserva existente
+    Dado que estou na página de lista de reservas
+    E tenho uma reserva selecionada
     Quando eu clicar no botão "Excluir"
     Então devo ver uma mensagem de confirmação de exclusão
-    E ao confirmar a exclusão, a reserva selecionada deve ser removida da lista
+    E se eu confirmar a exclusão, a reserva deve ser removida da lista
+    E devo ver uma mensagem de confirmação de exclusão
 
-Cenário: Voltar para a tela anterior
-    Dado que estou na tela de Lista de Reservas
+Cenário: Voltar à página anterior
+    Dado que estou na página de lista de reservas
     Quando eu clicar no botão "Voltar"
-    Então devo ser redirecionado para a tela anterior
+    Então devo voltar à página anterior

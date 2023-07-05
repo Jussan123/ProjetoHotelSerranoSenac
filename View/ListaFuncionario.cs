@@ -18,7 +18,6 @@ namespace View
         {
             this.Text = "Listagem de Funcionario";
             this.Load += new EventHandler(ListaFuncionario_Load);
-            this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void ListaFuncionario_Load(System.Object sender, System.EventArgs e)
@@ -54,8 +53,8 @@ namespace View
 
         private void SetupLayout()
         {
-            this.Size = new Size(600, 400);
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#3E5E50");
+            
+            
 
             adicionarFuncionarioButton.Text = "Novo";
             adicionarFuncionarioButton.Location = new Point(200, 10);
@@ -63,7 +62,7 @@ namespace View
             adicionarFuncionarioButton.BackColor = Color.Snow;
             adicionarFuncionarioButton.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
-            atualizarFuncionarioButton.Text = "Atualizar";
+            atualizarFuncionarioButton.Text = "Editar";
             atualizarFuncionarioButton.Location = new Point(300, 10);
             atualizarFuncionarioButton.Click += new EventHandler(atualizarFuncionarioButton_Click);
             atualizarFuncionarioButton.BackColor = Color.Snow;
@@ -88,6 +87,8 @@ namespace View
             buttonPanel.Height = 50;
             buttonPanel.Dock = DockStyle.Bottom;
 
+            this.Size = new Size(600, 400);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
             this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Controls.Add(this.buttonPanel);
@@ -113,7 +114,7 @@ namespace View
                 DataGridViewHeaderBorderStyle.Single;
             funcionarioGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             funcionarioGridView.GridColor = Color.Black;
-            funcionarioGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml(" #C0CCDA");
+            funcionarioGridView.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#748E83");
             funcionarioGridView.RowHeadersVisible = false;
 
             funcionarioGridView.Columns[0].Name = "Id";
